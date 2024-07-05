@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+    <title>Challenge 7 - Daniel Hasiando Sinaga</title>
+    <link rel="stylesheet"
+          href="css/style.css" />
+    <link rel="stylesheet"
+          href="css/owl.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+          rel="stylesheet" />
+    <link rel="stylesheet"
+    href="css/owl.carousel.min.css">
+    <link rel="stylesheet"
+    href="css/owl.theme.default.min.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script src="https://unpkg.com/feather-icons@4.28.0/dist/feather.min.js"></script>
+    <script>
+      feather.replace();
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <!-- <script src="../src/js/owl.carousel.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(".owl-carousel").owlCarousel();
+      });
+  
+      $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        items: 1,
+        responsive: {
+          768: {
+            stagePadding: 100,
+          },
+          1024: {
+            stagePadding: 250,
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
