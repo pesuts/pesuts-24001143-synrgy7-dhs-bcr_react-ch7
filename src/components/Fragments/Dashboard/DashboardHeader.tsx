@@ -1,15 +1,6 @@
-// type OnClickedProfile = () => void;
-
-// import { useEffect, useState } from "react";
-// import { decodeJwt } from "../../../utils/jwtVerify";
-import { useLogin } from "../../../hooks/useLogin";
-// import { useState } from "react";
-// import * as base64url from 'base64-url';
-// import jwtDecode from 'jwt-decode';
-// import * as jwt_decode from "jwt-decode";
-// import jwt_decode from 'jwt-decode';
-
-
+import { useEffect, useState } from "react";
+// import { useLogin } from "../../../hooks/useLogin";
+import { decodeJwt } from "../../../utils/jwtVerify";
 
 type Props = {
   title: string;
@@ -17,48 +8,27 @@ type Props = {
   onClickedProfile: (isClicked: boolean) => void;
 };
 
-function handleLogout() { 
-  localStorage.removeItem("token");
-  window.location.href = "/login";
-}
-
 export default function DashboardHeader({
   title,
   isClicked,
   onClickedProfile,
 }: Props) {
-  // const [localStorageData, setLocalStorageData] = useState<string>();
-  // const [userName, setUserName] = useState<string>();
-  const username = useLogin();
+  function handleLogout() {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+  }
 
+  const [userName, setUserName] = useState<string>("wew");
+  const token = localStorage.getItem("token");
 
-
-  // const umkm = localStorage.getItem("token");
-  // alert(umkm);
-
-  // try {
-  //   // Panggil fungsi decodeJwt dan ambil payload
-  //   const payload = decodeJwt(umkm!);
-
-  //   // Ambil username dari payload
-  //   const name = payload.name;
-  //   console.log(`Name: ${name}`);
-  // } catch (error) {
-  //   console.error("Error decoding JWT:", error!);
-  // }
-  // useEffect(() => {
-  //   try {
-  //     // Panggil fungsi decodeJwt dan ambil payload
-  //     const payload = decodeJwt(umkm!);
-    
-  //     // Ambil username dari payload
-  //     // const username = payload.name;
-  //     setUserName(payload.name);
-  //     // console.log(`Username: ${username}`);
-  //   } catch (error) {
-  //     console.error('Error decoding JWT:', error);
-  //   }
-  // }, []);
+  useEffect(() => {
+    try {
+      const payload = decodeJwt(token!);
+      setUserName(payload.name);
+    } catch (error) {
+      console.error("Error decoding JWT:", error);
+    }
+  }, []);
 
   return (
     <header className="flex justify-between items-center mb-8">
@@ -75,7 +45,7 @@ export default function DashboardHeader({
           onClick={() => onClickedProfile(!isClicked)}
         >
           <button className="flex items-center">
-            <span className="mr-2">{username}</span>
+            <span className="mr-2">{userName}</span>
             {/* <span className="mr-2">{userName}</span> */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -97,15 +67,7 @@ export default function DashboardHeader({
               className="outline-[#0C28A5] outline outline-[2px] dropdown-menu absolute 
               right-0 top-10 mt-2 w-48 bg-white rounded-md shadow-lg py-1"
             >
-              {/* <a
-                // href="#"
-                
-                className="block px-4 py-2 text-gray-700 hover:hover:bg-[#0C28A5] hover:text-white"
-              >
-                Profile
-              </a> */}
               <a
-                // href="#"
                 onClick={() => handleLogout()}
                 className="block px-4 py-2 text-gray-700 hover:hover:bg-[#0C28A5] hover:text-white"
               >

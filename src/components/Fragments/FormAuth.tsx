@@ -2,6 +2,7 @@ import { useState } from "react";
 import InputForm from "./InputForm";
 
 import { login, SuccessResponse, ErrorResponse, register } from "../../services/auth.service";
+import { useNavigate } from "react-router-dom";
 
 type Error = {
   isError: boolean;
@@ -19,6 +20,7 @@ type Props = {
 // }
 
 const FormAuth = ({ type, handleError }: Props) => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [name, setName] = useState<string>("");
@@ -50,9 +52,8 @@ const FormAuth = ({ type, handleError }: Props) => {
           const successResponse = res as SuccessResponse;
           // console.log(successResponse.token);
           localStorage.setItem("token", successResponse.token);
-          localStorage.setItem("daniel", "ganteng");
           handleError({ isError: false });
-          alert(successResponse.token);
+          navigate('/dashboard');
         }
         else { 
           const errorResponse = res as ErrorResponse;
