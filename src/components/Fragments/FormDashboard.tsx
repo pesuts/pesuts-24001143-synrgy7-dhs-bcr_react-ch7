@@ -1,5 +1,5 @@
 // import { useEffect, useState } from "react";
-import React, { useState, ChangeEvent, FormEvent, useEffect } from "react";
+import { useState, ChangeEvent, FormEvent, useEffect, useContext } from "react";
 import InputForm from "./InputForm";
 import { formatDateInput } from "../../utils/dateUtils";
 import {
@@ -12,6 +12,7 @@ import {
 
 import Modal from "react-modal";
 import NotificationBar from "./NotificationBar";
+import { CarsContext } from "../../contexts/CarsContext";
 
 Modal.setAppElement("#root");
 
@@ -43,16 +44,30 @@ const FormDashboard = ({ car }: Props) => {
   const [file, setFile] = useState<File | null>(null);
   const [previewURL, setPreviewURL] = useState<string | null>(null);
 
-  const [isNotificationVisible, setIsNotificationVisible] = useState(false);
-  const [notificationMessage, setNotificationMessage] = useState("");
-  const [isSuccess, setIsSuccess] = useState<boolean | undefined>(false);
+  // const [isNotificationVisible, setIsNotificationVisible] = useState(false);
+  // const [notificationMessage, setNotificationMessage] = useState("");
+  // const [isSuccess, setIsSuccess] = useState<boolean | undefined>();
 
-  
+  const carContext = useContext(CarsContext);
+
+  const {
+    isNotificationVisible,
+    notificationMessage,
+    isSuccess,
+    setIsNotificationVisible,
+    setNotificationMessage,
+    setIsSuccess,
+  } = carContext!;
+
   // useEffect(() => {
-  //   if (car?.image_url) { 
+  //   if (car?.image_url) {
   //     setPreviewURL(car.image_url);
   //   }
   // }, []);
+
+  // useEffect(() => {
+  //   console.log(isNotificationVisible);
+  // }, [isNotificationVisible]);
 
   useEffect(() => {
     setModel(car?.model);
@@ -64,10 +79,14 @@ const FormDashboard = ({ car }: Props) => {
     }
     setCreatedAt(car?.created_at);
     setUpdatedAt(car?.updated_at);
-    if (car?.image_url) { 
-      setPreviewURL(car.image_url);
+    if (car?.image_url) {
+      setPreviewURL(`http://localhost:3000${car.image_url}`);
     }
   }, [car]);
+
+  // useEffect(() => {
+  //   console.log(isSuccess);
+  // }, [isSuccess]);
 
   const handleModel = (model: string) => {
     setModel(model);
@@ -104,12 +123,9 @@ const FormDashboard = ({ car }: Props) => {
       category: carCategory!,
     };
     if (file) newCar.image = file;
-    // console.log(newCar);
 
-    if (car?.id) { 
-      // alert("sube");
+    if (car?.id) {
       updateCar(car.id, newCar, (status, res) => {
-        // console.log(res);
         if (status) {
           setNotificationMessage("Berhasil memperbarui data!");
           setIsSuccess(true);
@@ -117,17 +133,13 @@ const FormDashboard = ({ car }: Props) => {
           const errorResponse = res as ErrorResponse;
           setIsSuccess(false);
           setNotificationMessage(errorResponse.message);
-          // console.log(errorResponse);
-          alert(errorResponse.message);
         }
       });
       setIsNotificationVisible(true);
       return;
     }
 
-    
     postCar(newCar, (status, res) => {
-      console.log(res);
       if (status) {
         setNotificationMessage("Berhasil menambahkan data!");
         setIsSuccess(true);
@@ -164,8 +176,6 @@ const FormDashboard = ({ car }: Props) => {
       {category}
     </option>
   ));
-  console.log("orba");
-  console.log(previewURL);
 
   return (
     <div className="w-7/12 p-2">
@@ -209,6 +219,7 @@ const FormDashboard = ({ car }: Props) => {
               value={price}
               name="price"
               type="number"
+              min={10000}
               label="Harga"
               mandatory={true}
               placeholder="Masukkan harga"
@@ -216,9 +227,6 @@ const FormDashboard = ({ car }: Props) => {
               styleInput="w-[60%]"
               handleInput={handlePrice}
             />
-            <p className="text-gray-400 text-sm ms-[40%] -mt-4">
-              File Size Max, 1 MB
-            </p>
             <div className="mb-4 justify-between flex items-center">
               <label className="block text-gray-700 font-bold">
                 Kategori
@@ -247,10 +255,14 @@ const FormDashboard = ({ car }: Props) => {
               accept="image/*"
               handleInputFile={handleFileChange}
             />
+            <p className="text-gray-400 text-sm ms-[40%] -mt-4">
+              File Size Max, 1 MB
+            </p>
             {previewURL && (
               <div className="ms-[40%] w-[200px] mb-4">
                 <img
-                  src={(car) ? `http://localhost:3000${previewURL}` : previewURL}
+                  src={previewURL}
+                  // src={(car?.image_url) ? `http://localhost:3000${previewURL}` : previewURL}
                   alt="Input File Image"
                   style={{ width: "200px", height: "auto" }}
                 />
@@ -294,16 +306,15 @@ const FormDashboard = ({ car }: Props) => {
               styleInput="w-[60%] border-0"
             />
             <div className="flex w-6/12 gap-8 mt-20">
-              <button
+              <a
                 onClick={() => {
                   window.location.href = "/dashboard/cars";
                 }}
-                type="submit"
-                className="w-full outline-[#0C28A5] outline outline-[2.5px] text-[#0C28A5] 
+                className="w-full cursor-pointer text-center outline-[#0C28A5] outline outline-[2.5px] text-[#0C28A5] 
               p-2 rounded font-bold bg-white hover:bg-[#081B6E] hover:text-white"
               >
                 Cancel
-              </button>
+              </a>
               <button
                 type="submit"
                 className="w-full bg-[#0C28A5] text-white font-bold p-2 rounded hover:bg-[#081B6E]"
@@ -321,9 +332,8 @@ const FormDashboard = ({ car }: Props) => {
           isSuccess={isSuccess!}
           onClose={() => setIsNotificationVisible(false)}
         />
-      )
-      }
-      { (isSuccess) ? (window.location.href = "/dashboard/cars") : '' }
+      )}
+      {isSuccess ? (window.location.href = "/dashboard/cars") : ""}
     </div>
   );
 };

@@ -14,6 +14,7 @@ type Props = {
   style?: string;
   styleInput?: string;
   accept?: string;
+  min?: number
 };
 
 const InputForm: React.FC<Props> = ({
@@ -30,6 +31,7 @@ const InputForm: React.FC<Props> = ({
   style,
   styleInput,
   accept,
+  min
 }) => {
   const [error, setError] = useState<string | null>(null);
   const lowercaseName = name.toLowerCase().replace(" ", "-");
@@ -77,6 +79,7 @@ const InputForm: React.FC<Props> = ({
         placeholder={placeholder || capitalName}
         required={mandatory}
         accept={accept}
+        min={min}
         className={`w-full mt-2 p-2 border border-gray-300 rounded ${
           styleInput || ""
         }`.trim()}

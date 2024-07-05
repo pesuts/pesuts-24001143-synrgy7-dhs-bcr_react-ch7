@@ -1,5 +1,5 @@
-import React, { createContext, useState, useEffect, ReactNode } from 'react';
-import { deleteCar, getCars } from '../services/car.service';
+import React, { createContext, useState, useEffect, ReactNode } from "react";
+import { deleteCar, getCars } from "../services/car.service";
 // import { getCars, deleteCar } from '../api';
 
 interface Car {
@@ -27,6 +27,7 @@ interface CarsContextProps {
   isNotificationVisible: boolean;
   notificationMessage: string;
   isSuccess: boolean | undefined;
+  setCars: (cars: Car[]) => void;
   setActionDelete: (actionDelete: ActionDelete) => void;
   setIsModalOpen: (isOpen: boolean) => void;
   setIsNotificationVisible: (isVisible: boolean) => void;
@@ -57,19 +58,36 @@ export interface ErrorResponse {
   message: string;
 }
 
-const CarsContext = createContext<CarsContextProps | undefined>(undefined);
+export const CarsContext = createContext<CarsContextProps | null>(null);
 
-interface Props { 
+interface Props {
   children: ReactNode;
 }
 
 const CarsProvider = ({ children }: Props) => {
   const [cars, setCars] = useState<Car[]>([]);
-  const [actionDelete, setActionDelete] = useState<ActionDelete>({ isDeleted: false });
+  // const [actionDelete, setActionDelete] = useState<ActionDelete | undefined>();
+  const [actionDelete, setActionDelete] = useState<ActionDelete>({
+    isDeleted: false,
+  });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isNotificationVisible, setIsNotificationVisible] = useState(false);
   const [notificationMessage, setNotificationMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState<boolean | undefined>(undefined);
+
+  function onClose() { 
+    setIsModalOpen(false);
+  }
+
+  useEffect(() => {
+    if (isNotificationVisible) {
+      const timer = setTimeout(() => {
+        // onClose();
+        onClose();
+      }, 3000); // 3 detik
+      return () => clearTimeout(timer);
+    }
+  }, [isNotificationVisible, onClose]);
 
   useEffect(() => {
     const getCarsState = async () => {
@@ -85,41 +103,51 @@ const CarsProvider = ({ children }: Props) => {
   }, []);
 
   useEffect(() => {
-    if (actionDelete?.idCar && actionDelete.isDeleted === true) {
-      deleteCar(actionDelete.idCar, (status: boolean, res: SuccessResponse | ErrorResponse) => {
-        console.log(res);
-        if (status) {
-          setIsSuccess(true);
-          setCars((prevCars) => prevCars.filter(car => car.id !== Number(actionDelete.idCar)));
-          setNotificationMessage("Berhasil menghapus data!");
-        } else {
-          const errorResponse = res;
-          setIsSuccess(false);
-          setNotificationMessage(errorResponse.message);
+    // alert("bogeng");
+    if (actionDelete?.idCar)
+    if (actionDelete?.idCar && actionDelete.isDeleted) {
+      deleteCar(
+        actionDelete.idCar,
+        (status: boolean, res: SuccessResponse | ErrorResponse) => {
+          console.log(res);
+          if (status) {
+            setIsSuccess(true);
+            setCars((prevCars) =>
+              prevCars.filter((car) => car.id !== Number(actionDelete.idCar))
+            );
+            setNotificationMessage("Berhasil menghapus data!");
+            setIsModalOpen(false);
+          } else {
+            const errorResponse = res;
+            setIsSuccess(false);
+            setNotificationMessage(errorResponse.message);
+          }
+          setIsNotificationVisible(true);
         }
-        setIsNotificationVisible(true);
-      });
+      );
     }
   }, [actionDelete]);
 
   return (
-    <CarsContext.Provider value={{
-      cars,
-      actionDelete,
-      isModalOpen,
-      isNotificationVisible,
-      notificationMessage,
-      isSuccess,
-      setActionDelete,
-      setIsModalOpen,
-      setIsNotificationVisible,
-      setNotificationMessage,
-      setIsSuccess
-    }}>
+    <CarsContext.Provider
+      value={{
+        cars,
+        actionDelete,
+        isModalOpen,
+        isNotificationVisible,
+        notificationMessage,
+        isSuccess,
+        setCars,
+        setActionDelete,
+        setIsModalOpen,
+        setIsNotificationVisible,
+        setNotificationMessage,
+        setIsSuccess,
+      }}
+    >
       {children}
     </CarsContext.Provider>
   );
 };
 
-export const Cars = CarsContext;
 export default CarsProvider;

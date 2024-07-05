@@ -6,7 +6,6 @@ import { useParams } from "react-router-dom";
 import FormDashboard from "../Fragments/FormDashboard";
 import { useEffect, useState } from "react";
 import { getCarById } from "../../services/car.service";
-
 // type Props = {
 //   name: string;
 //   type?: string;
@@ -35,27 +34,25 @@ type Car = {
 export default function DashboardForm() {
   const { id } = useParams();
   const [car, setCar] = useState<Car>();
-  
-  useEffect(() => { 
-    if (id) { 
-      const fetchCar = async () => { 
+
+  useEffect(() => {
+    if (id) {
+      const fetchCar = async () => {
         try {
           const result = await getCarById(id);
           setCar(result[0]!);
         } catch (error) {
           console.log(error);
         }
-      }
+      };
 
       fetchCar();
     }
   }, [id]);
-  // if (id) { 
-  // }
 
   return (
     <div className="bg-white ">
-      <FormDashboard car={car}/>
+      <FormDashboard car={car} />
     </div>
   );
 }

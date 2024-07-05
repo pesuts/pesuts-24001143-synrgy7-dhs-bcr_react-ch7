@@ -1,13 +1,15 @@
 // import {  } from "@heroicons/react/24/outline";
 import { TrashIcon, PencilSquareIcon, ClockIcon, KeyIcon } from "@heroicons/react/24/outline";
 import { formatDate } from "../../utils/dateUtils";
+import { useContext } from "react";
+import { CarsContext } from "../../contexts/CarsContext";
 // import { PencilSquareIcon } from "@heroicons/react/24/outline";
 // import { deleteCar } from "../../services/car.service";
 
-interface ActionDelete { 
-  idCar?: string;
-  isDeleted: boolean;
-}
+// interface ActionDelete { 
+//   idCar?: string;
+//   isDeleted: boolean;
+// }
 
 type Props = {
   id: string;
@@ -15,13 +17,13 @@ type Props = {
   name: string;
   type: string;
   rentPerDay: number;
-  handleActionDeleteCar: (actionDelete: ActionDelete) => void;
+  // handleActionDeleteCar: (actionDelete: ActionDelete) => void;
   // description: string;
   // capacity: number;
   // transmission: string;
   // year: number;
   updatedAt: Date;
-  handleModal: (isModalOpen: boolean) => void;
+  // handleModal: (isModalOpen: boolean) => void;
 };
 
 export default function DashboardCarCard({
@@ -30,14 +32,33 @@ export default function DashboardCarCard({
   name,
   type,
   rentPerDay,
-  handleActionDeleteCar,
+  // handleActionDeleteCar,
   // description,
   // capacity,
   // transmission,
   // year,
   updatedAt,
-  handleModal
+  // handleModal
 }: Props) {
+  const carsContext = useContext(CarsContext);
+  if (!carsContext) {
+    return null;
+  }
+
+  const {
+    // cars,
+    actionDelete,
+    // isModalOpen,
+    // isNotificationVisible,
+    // notificationMessage,
+    // isSuccess,
+    setActionDelete,
+    setIsModalOpen,
+    // setIsNotificationVisible,
+    // setNotificationMessage,
+    // setIsSuccess
+  } = carsContext;
+
   return (
     // <div className="max-w-sm">
     <div className="m-1">
@@ -66,11 +87,19 @@ export default function DashboardCarCard({
         <div className="flex justify-between gap-4 mt-4">
           <button
             onClick={() => {
-              handleModal(true)
-              handleActionDeleteCar({
-                idCar: id,
-                isDeleted: false
+              // alert(id)
+              // handleModal(true)
+              setIsModalOpen(true)
+              // handleActionDeleteCar({
+              //   idCar: id,
+              //   isDeleted: false
+              // })
+              setActionDelete({
+                  idCar: id,
+                  isDeleted: false
               })
+              console.log(actionDelete)
+              // console.log(id)
             }}
             className="cursor-pointer outline outline-2 outline-red-600 text-red-600 
             font-bold w-full py-2.5 rounded-sm hover:bg-red-600 hover:text-white
