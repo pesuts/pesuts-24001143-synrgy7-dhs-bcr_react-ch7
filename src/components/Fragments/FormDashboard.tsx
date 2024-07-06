@@ -6,7 +6,6 @@ import {
   postCar,
   updateCar,
   CarInput,
-  // SuccessResponse,
   ErrorResponse,
 } from "../../services/car.service";
 
@@ -44,10 +43,6 @@ const FormDashboard = ({ car }: Props) => {
   const [file, setFile] = useState<File | null>(null);
   const [previewURL, setPreviewURL] = useState<string | null>(null);
 
-  // const [isNotificationVisible, setIsNotificationVisible] = useState(false);
-  // const [notificationMessage, setNotificationMessage] = useState("");
-  // const [isSuccess, setIsSuccess] = useState<boolean | undefined>();
-
   const carContext = useContext(CarsContext);
 
   const {
@@ -58,16 +53,6 @@ const FormDashboard = ({ car }: Props) => {
     setNotificationMessage,
     setIsSuccess,
   } = carContext!;
-
-  // useEffect(() => {
-  //   if (car?.image_url) {
-  //     setPreviewURL(car.image_url);
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   console.log(isNotificationVisible);
-  // }, [isNotificationVisible]);
 
   useEffect(() => {
     setModel(car?.model);
@@ -83,10 +68,6 @@ const FormDashboard = ({ car }: Props) => {
       setPreviewURL(`http://localhost:3000${car.image_url}`);
     }
   }, [car]);
-
-  // useEffect(() => {
-  //   console.log(isSuccess);
-  // }, [isSuccess]);
 
   const handleModel = (model: string) => {
     setModel(model);
@@ -237,7 +218,6 @@ const FormDashboard = ({ car }: Props) => {
                 value={carCategory}
                 onChange={(e) => {
                   setCarCategory(e.target.value);
-                  // alert(carCategory);
                 }}
               >
                 {selectCarCategories}
@@ -262,7 +242,6 @@ const FormDashboard = ({ car }: Props) => {
               <div className="ms-[40%] w-[200px] mb-4">
                 <img
                   src={previewURL}
-                  // src={(car?.image_url) ? `http://localhost:3000${previewURL}` : previewURL}
                   alt="Input File Image"
                   style={{ width: "200px", height: "auto" }}
                 />
@@ -279,13 +258,10 @@ const FormDashboard = ({ car }: Props) => {
             <InputForm
               label="Finish Rent"
               name="Finish Rent"
-              // type="text"
-              // type="date"
               disabled={true}
               style="mb-4 justify-between flex items-center"
               styleInput="w-[60%] border-0"
             />
-            {/* <p>{formatDateInput(new Date(createdAt!))}</p> */}
             <InputForm
               value={formatDateInput(new Date(createdAt!))}
               type="date"
@@ -295,7 +271,6 @@ const FormDashboard = ({ car }: Props) => {
               style="mb-4 justify-between flex items-center"
               styleInput="w-[60%] border-0"
             />
-            {/* <p>{formatDateInput(new Date(updatedAt!))}</p> */}
             <InputForm
               value={formatDateInput(new Date(updatedAt!))}
               label="Updated At"

@@ -1,6 +1,3 @@
-// import Contact from "../Fragments/Footer/Contact";
-// import FootNavButton from "../Fragments/Footer/FootNavButton";
-// import SocialMedia from "../Fragments/Footer/SocialMedia";
 import Footer from "../Fragments/Footer";
 
 export default function FooterLayout() {
@@ -12,10 +9,6 @@ export default function FooterLayout() {
             <Footer.Contact text="Jalan Suroyo No. 161 Mayangan Kota Probolinggo 672000" />
             <Footer.Contact text="binarcarrental@gmail.com" />
             <Footer.Contact text="081-233-334-808" />
-            {/* <li className="py-1">
-            </li> */}
-            {/* <li className="py-1">binarcarrental@gmail.com</li>
-            <li className="py-1">081-233-334-808</li> */}
           </ul>
         </div>
         <div className="lg:w-2/12">
@@ -24,32 +17,6 @@ export default function FooterLayout() {
             <Footer.NavButton text="Why Us" />
             <Footer.NavButton text="Testimonial" />
             <Footer.NavButton text="FAQ" />
-            {/* <li className="py-2 font-semibold">
-              <a
-                href="#our-section"
-                className="text-decoration-none text-black"
-              >
-                Our Services
-              </a>
-            </li>
-            <li className="py-2 font-semibold">
-              <a href="#why-us" className="text-decoration-none text-black">
-                Why Us
-              </a>
-            </li>
-            <li className="py-2 font-semibold">
-              <a
-                href="#testimonial"
-                className="text-decoration-none text-black"
-              >
-                Testimonial
-              </a>
-            </li>
-            <li className="py-2 font-semibold">
-              <a href="#faq" className="text-decoration-none text-black">
-                FAQ
-              </a>
-            </li> */}
           </ul>
         </div>
         <div className="lg:w-4/12">
@@ -60,21 +27,6 @@ export default function FooterLayout() {
             <Footer.SocialMedia text="twitter" />
             <Footer.SocialMedia text="mail" />
             <Footer.SocialMedia text="twitch" />
-            {/* <a href="">
-              <img src="img/icons/icon-facebook.png" width="30" alt="" />
-            </a>
-            <a href="">
-              <img src="img/icons/icon-instagram.png" width="30" alt="" />
-            </a>
-            <a href="">
-              <img src="img/icons/icon-twitter.png" width="30" alt="" />
-            </a>
-            <a href="">
-              <img src="img/icons/icon-mail.png" width="30" alt="" />
-            </a>
-            <a href="">
-              <img src="img/icons/icon-twitch.png" width="30" alt="" />
-            </a> */}
           </div>
         </div>
         <div className="lg:w-3/12">

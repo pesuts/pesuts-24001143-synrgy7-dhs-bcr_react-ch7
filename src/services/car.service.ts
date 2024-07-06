@@ -4,9 +4,7 @@ import axios from "axios";
 const url = "http://localhost:3000/api/cars/";
 
 // Bearer token
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJzdXBlcmFkbWluQG1haWwuY29tIiwicm9sZSI6InN1cGVyYWRtaW4iLCJpYXQiOjE3MjAxNzg0NzAsImV4cCI6MTcyMDI2NDg3MH0.rZQm-k3ZT9REgJgqJedsDVPG7hrMXE-KU8JWLEr448E";
-
+const token = localStorage.getItem("token");
 
 export type CarInput = {
   model: string;
@@ -56,17 +54,6 @@ export const getApiCars = async () => {
   } catch (error) {
     console.error("Error:", error);
   }
-  // axios.get('https://raw.githubusercontent.com/fnurhidayat/probable-garbanzo/main/data/cars.min.json')
-  // .then((response) => {
-  //   // handle success
-  //   // console.log(response);
-  //   const data = response.data;
-  //   return data;
-  // })
-  // .catch((error) => {
-  //   // handle error
-  //   console.log(error);
-  // })
 };
 
 export const getCars = async () => {
@@ -86,42 +73,6 @@ export const getCarById = async (id: string) => {
     console.error("Error:", error);
   }
 };
-
-// export const postCar = (
-//   data: CarInput,
-//   callback: (status: boolean, res: SuccessResponse | ErrorResponse) => void
-// ) => {
-//   axios
-//     .post<SuccessResponse>(url, data, config)
-//     .then((response) => {
-//       const successResponse: SuccessResponse = response.data;
-//       callback(true, successResponse);
-//     })
-//     .catch((error) => {
-//       const errorResponse: ErrorResponse = error.response?.data;
-//       callback(false, errorResponse);
-//     });
-// };
-
-// export const postCar = (
-//   data: FormData,
-//   callback: (status: boolean, res: SuccessResponse | ErrorResponse) => void
-// ) => {
-//   axios
-//     .post<SuccessResponse>(url, data, {
-//       headers: {
-//         'Content-Type': 'multipart/form-data'
-//       }
-//     })
-//     .then((response) => {
-//       const successResponse: SuccessResponse = response.data;
-//       callback(true, successResponse);
-//     })
-//     .catch((error) => {
-//       const errorResponse: ErrorResponse = error.response?.data;
-//       callback(false, errorResponse);
-//     });
-// };
 
 export const postCar = (
   data: CarInput,

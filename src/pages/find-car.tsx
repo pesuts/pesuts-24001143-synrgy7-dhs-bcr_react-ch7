@@ -8,13 +8,7 @@ import CarCard from "../components/Fragments/CarCard";
 export default function FindCar() {
   const findCarContext = useContext(FindCarContex);
 
-  // if (findCarContext) {
   const { filteredCars } = findCarContext!;
-  // }
-
-
-  // const { cars, setCars } = findCarContext;
-  // const [cars, setCars] = useState();
 
   return (
     <main className="mb-5">

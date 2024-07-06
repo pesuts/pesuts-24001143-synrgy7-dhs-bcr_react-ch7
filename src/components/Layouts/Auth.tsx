@@ -1,8 +1,6 @@
 import { ReactNode, useState } from "react";
 import { Link } from "react-router-dom";
 import FormAuth from "../Fragments/FormAuth";
-// import { error } from "console";
-// import InputPassword from "../Fragments/Input/InputPassword";
 
 type Props = {
   handleLogin?: () => void;
@@ -24,9 +22,6 @@ export default function Auth({
   subHeader,
   // buttonText,
 }: Props) {
-  // const [email, setEmail] = useState();
-  // const [password, setPassword] = useState();
-  // const [isError, setIsError] = useState<boolean>(false);
   const [error, setError] = useState<Error>({
     isError: false
   });
@@ -80,12 +75,6 @@ export default function Auth({
               >
                 {type === "login" ? "Daftar " : "Login"} Sekarang
               </Link>
-              {/* <a
-        className="text-blue-600 font-semibold px-1 hover:text-blue-800"
-        href={ (type === "login") ? "/register " : "/login"}
-      >
-        {type === "login" ? "Daftar " : "Login"} Sekarang
-      </a> */}
             </p>
           </div>
         </div>

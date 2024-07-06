@@ -22,56 +22,6 @@ export default function Our() {
             wedding, meeting , dll.
           </p>
           <ul className="services-list">
-            {/* <li className="py-2">
-              <p className="">
-                <img
-                  src="img/icons/check.png"
-                  className="inline h-6 pe-2"
-                  alt=""
-                />
-                Sewa Mobil Dengan Supir di Bali 12 Jam
-              </p>
-            </li>
-            <li className="py-2">
-              <p className="checklist">
-                <img
-                  src="img/icons/check.png"
-                  className="inline h-6 pe-2"
-                  alt=""
-                />
-                Sewa Mobil Lepas Kunci di Bali 24 Jam
-              </p>
-            </li>
-            <li className="py-2">
-              <p className="checklist">
-                <img
-                  src="img/icons/check.png"
-                  className="inline h-6 pe-2"
-                  alt=""
-                />
-                Sewa Mobil Jangka Panjang Bulanan
-              </p>
-            </li>
-            <li className="py-2">
-              <p className="checklist">
-                <img
-                  src="img/icons/check.png"
-                  className="inline h-6 pe-2"
-                  alt=""
-                />
-                Gratis Antar - Jemput Mobil di Bandara
-              </p>
-            </li>
-            <li className="py-2">
-              <p className="checklist">
-                <img
-                  src="img/icons/check.png"
-                  className="inline h-6 pe-2"
-                  alt=""
-                />
-                Layanan Airport Transfer / Drop In Out
-              </p>
-            </li> */}
             <OurList text="Sewa Mobil Dengan Supir di Bali 12 Jam" />
             <OurList text="Sewa Mobil Lepas Kunci di Bali 24 Jam" />
             <OurList text="Sewa Mobil Jangka Panjang Bulanan" />

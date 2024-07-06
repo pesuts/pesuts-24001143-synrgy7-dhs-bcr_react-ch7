@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import Hero from "../Fragments/Hero";
-// import FindCarForm from "./FindCarForm";
 import Navbar from "./Navbar";
 
 type Props = {

@@ -24,51 +24,8 @@ export default function Navbar() {
               <NavButton text="FAQ" />
             </NavList>
             <NavList>
-              <GreenButton text="Register" href="#" />
+              <GreenButton text="Register" href="register" />
             </NavList>
-            {/* <NavList text="Why Us"/>
-            <NavList text="Testimonial"/>
-            <NavList text="FAQ"/> */}
-            {/* <li className="nav-item px-2">
-              <a
-                className="nav-link active font-semibold hover:font-extrabold"
-                href="#our-section"
-              >
-                Our Service
-              </a>
-            </li>
-            <li className="nav-item px-2">
-              <a
-                className="nav-link font-semibold hover:font-extrabold"
-                href="#why-us"
-              >
-                Why Us
-              </a>
-            </li>
-            <li className="nav-item px-2">
-              <a
-                className="nav-link font-semibold hover:font-extrabold"
-                href="#testimonial"
-              >
-                Testimonial
-              </a>
-            </li>
-            <li className="nav-item px-2">
-              <a
-                className="nav-link font-semibold hover:font-extrabold"
-                href="#faq"
-              >
-                FAQ
-              </a>
-            </li> */}
-            {/* <li className="nav-item px-2">
-              <a
-                className="inline-block mx-auto bg-lime-green text-sm text-white px-3 py-2 font-bold rounded hover:bg-lime-green-hover"
-                href="#"
-              >
-                Register
-              </a>
-            </li> */}
           </ul>
         </div>
         <button
@@ -137,26 +94,6 @@ export default function Navbar() {
           <SideNavButton text="Why US" />
           <SideNavButton text="Testimonial" />
           <SideNavButton text="FAQ" />
-          {/* <a href="#our-section" className="block py-2 font-semibold">
-            Our Service
-          </a>
-          <a href="#why-us" className="block py-2 font-semibold">
-            Why US
-          </a>
-          <a href="#testimonial" className="block py-2 font-semibold">
-            Testimonial
-          </a>
-          <a href="#faq" className="block py-2 font-semibold">
-            FAQ
-          </a> */}
-          {/* <a
-            href=""
-            className="
-inline-block bg-lime-green text-sm text-white px-3 py-2 my-4 font-bold rounded hover:bg-lime-green-hover
-"
-          >
-            Registerse
-          </a> */}
           <GreenButton text="Registrasi" href="#" style="my-4 px-4"/>
         </div>
       </div>

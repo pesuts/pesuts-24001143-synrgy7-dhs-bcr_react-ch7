@@ -14,17 +14,11 @@ type Props = {
   handleError: (error: Error) => void;
 };
 
-// type Data =  {
-//   username: string;
-//   password: string;
-// }
-
 const FormAuth = ({ type, handleError }: Props) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [name, setName] = useState<string>("");
-  // const [isError, setIsError] = useState<boolean>(true);
 
   const handleEmail = (email: string) => {
     setEmail(email);
@@ -61,17 +55,10 @@ const FormAuth = ({ type, handleError }: Props) => {
         }
       });
       return;
-      // const token = data.data.token;
     }
-    // localStorage.setItem("email", email);
-    // localStorage.setItem("password", email);
-    // alert(email + " " + password);
     if (type === "register") { 
       register({ name, email, password }, (status, res) => {
         if (status) {
-          // const successResponse = res as SuccessResponse;
-          // console.log(successResponse.token);
-          // localStorage.setItem("token", successResponse.token);
           handleError({ isError: false });
           navigate("/login");
         }
@@ -81,9 +68,6 @@ const FormAuth = ({ type, handleError }: Props) => {
           console.log(errorResponse.message);
         }
       });
-      // alert(name);
-      // localStorage.setItem("name", name);
-      // window.location.href = "/login";
     }
 
   };

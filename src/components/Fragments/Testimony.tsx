@@ -1,11 +1,7 @@
-// import { ReactNode } from "react";
-// import NavButton from "../Elements/Button/NavButton";
-
 type Props = {
   person: string;
   picture: string;
   testimony: string;
-  // children?: ReactNode;
 };
 
 export default function Testimony({ person, picture, testimony }: Props) {
@@ -29,15 +25,8 @@ export default function Testimony({ person, picture, testimony }: Props) {
             />
           </div>
           <p className="text-left text-base">
-            {/* “Saya sangat puas dengan layanan rental mobil dari Binar Car Rental.
-            Mobil yang disediakan dalam kondisi prima, bersih, dan nyaman untuk
-            perjalanan terlebih untuk saya yang sangat cinta dengan kebersihan
-            dan kulitnya sensitif akan kotoran/debu. Pelayanan dari timnya juga
-            sangat ramah dan profesional. Terima kasih Binar Car Rental, saya
-            pasti akan merekomendasikan kepada teman dan keluarga!” */}
             {testimony}
           </p>
-          {/* <p className="font-bold py-3">Toni Sunarto 37, Jakarta</p> */}
           <p className="font-bold py-3">{person}</p>
         </div>
       </div>

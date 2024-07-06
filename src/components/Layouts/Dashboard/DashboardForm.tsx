@@ -1,23 +1,7 @@
-// import DashboardCarCard from "../Fragments/DashboardCarCard";
-
-// import { useState } from "react";
-// import InputForm from "../Fragments/InputForm";
 import { useParams } from "react-router-dom";
-import FormDashboard from "../Fragments/FormDashboard";
+import FormDashboard from "../../Fragments/FormDashboard";
 import { useEffect, useState } from "react";
-import { getCarById } from "../../services/car.service";
-// type Props = {
-//   name: string;
-//   type?: string;
-//   label?: string;
-//   placeholder?: string;
-//   style?: string;
-//   styleInput: string;
-// };
-
-// type Props = {
-//   id?: string;
-// };
+import { getCarById } from "../../../services/car.service";
 
 type Car = {
   id: string;

@@ -1,11 +1,4 @@
-// import { ReactNode } from "react";
-// import NavButton from "../Elements/Button/NavButton";
-
 import { ReactNode } from "react";
-
-// type Props = {
-//   text: string;
-// };
 
 type Props = {
   text: string;
@@ -15,11 +8,6 @@ type Props = {
 const Footer = ({ children }: Props) => {
   return { children };
 }
-
-// import { ReactNode } from 'react';
-// import NavButton from "../Elements/Button/NavButton";
-
-
 
 const Contact = ({ text }: Props) => {
   return (

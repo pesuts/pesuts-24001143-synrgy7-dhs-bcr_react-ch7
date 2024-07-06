@@ -1,16 +1,8 @@
-// import { ReactNode, useState } from "react";
-import Table from "../Fragments/Dashboard/Table";
-import TableHeader from "../Fragments/Dashboard/TableHeader";
-import TableContent from "../Fragments/Dashboard/TableContent";
-import { getCars } from "../../services/car.service";
+import Table from "../../Fragments/Dashboard/Table";
+import TableHeader from "../../Fragments/Dashboard/TableHeader";
+import TableContent from "../../Fragments/Dashboard/TableContent";
+import { getCars } from "../../../services/car.service";
 import { useEffect, useState } from "react";
-// type Props = {
-//   type: string;
-//   children: ReactNode;
-//   header?: string;
-//   subHeader?: string;
-//   buttonText: string;
-// };
 
 type Car = {
   id: number;
@@ -26,7 +18,6 @@ type Car = {
 };
 
 export default function DashboardTable() {
-  // const [isClicked, setIsClicked] = useState(false);
   const [cars, setCars] = useState<Car[]>([]);
 
   useEffect(() => {
@@ -53,7 +44,7 @@ export default function DashboardTable() {
     "Finish Rent",
     "Created At",
     "Updated At",
-  ]
+  ];
 
   // const rows = [
   //   {
@@ -105,8 +96,8 @@ export default function DashboardTable() {
 
   return (
     <Table>
-      <TableHeader columns={columns}/>
-      <TableContent cars={cars}/>
+      <TableHeader columns={columns} />
+      <TableContent cars={cars} />
       {/* <TableContent rows={rows}/> */}
     </Table>
   );

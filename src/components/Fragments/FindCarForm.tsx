@@ -28,7 +28,6 @@ export default function FindCarForm() {
 
   const findCarContext = useContext(FindCarContex);
 
-  // if (findCarContext) {
   const { cars, setFilteredCars } = findCarContext!;
 
   function filterCars(
@@ -50,7 +49,8 @@ export default function FindCarForm() {
         formPenumpang
       );
     if (formDriver !== "" && formTanggal !== "" && formWaktu !== "")
-      return filterCarsWithDriverDateTime(formDriver, formTanggal, formWaktu);
+      // return filterCarsWithDriverDateTime(formDriver, formTanggal, formWaktu);
+      return filterCarsWithDriverDateTime();
   }
 
   function filterCarsWithAllParams(
@@ -61,21 +61,17 @@ export default function FindCarForm() {
   ): Car[] {
     return cars.filter(
       (car) =>
-        // car.driver === formDriver &&
         car.capacity.toString() == formPenumpang &&
         (new Date(car.availableAt).toISOString()) < (new Date(date + " " + time).toISOString())
-        // car.availableAt < new Date(formTanggal + " " + formWaktu)
     );
   }
 
   function filterCarsWithDriverDateTime(
-    formDriver: boolean,
-    formTanggal: string,
-    formWaktu: string
+    // formDriver: boolean,
+    // formTanggal: string,
+    // formWaktu: string
   ): Car[] {
     return cars.filter(
-      // car.driver === formDriver &&
-      // car.availableAt < new Date(formTanggal + " " + formWaktu)
       (car) => (new Date(car.availableAt).toISOString()) < (new Date(date + " " + time).toISOString())
     );
   }
@@ -148,7 +144,6 @@ export default function FindCarForm() {
           <button
             id="filter-btn"
             className=" bg-lime-green text-sm text-white mt-3 my-2 lg:mt-0 lg:my-0 px-3 py-3 font-bold rounded hover:bg-lime-green-hover"
-            // href=""
           >
             Cari Mobil
           </button>

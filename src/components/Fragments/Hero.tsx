@@ -1,7 +1,4 @@
 import { ReactNode } from "react";
-// import GreenButton from "../../Elements/Button/GreenButton";
-// import HeroPicture from "./HeroPicture";
-// import HeroTitle from "./HeroTitle";
 
 type Props = {
   style?: string;
@@ -9,17 +6,11 @@ type Props = {
 }
 
 const Hero = ({style, children}: Props) => {
-  // `${defaultClassName} ${style || ''}`.trim();
   return (
     <div className="lg:flex items-end">
       <div className="py-2 lg:py-0 w-11/12 lg:flex lg:w-1/2 lg:justify-end">
         <div className={`lg:ps-32 lg:pt-16 ${style || ''}`.trim()} >
           <HeroTitle />
-          {/* <GreenButton
-            text="Mulai Sewa Mobil"
-            href="cars"
-            style="lg:mt-4 lg:mb-20"
-          /> */}
           {children}
         </div>
       </div>

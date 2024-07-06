@@ -1,17 +1,12 @@
-// import { ReactNode } from "react";
-// import NavButton from "../Elements/Button/NavButton";
-
 type Props = {
   text: string;
   id: string;
   description: string;
-  // children?: ReactNode;
 };
 
 export default function FaqList({ text, id, description }: Props) {
   return (
     <>
-      {/* <h2 id="accordion-collapse-heading-1"> */}
       <h2 id={id}>
         <button
           type="button"
@@ -20,7 +15,6 @@ export default function FaqList({ text, id, description }: Props) {
           aria-expanded="true"
           aria-controls="accordion-collapse-body-1"
         >
-          {/* <span>Apa saja syarat yang dibutuhkan?</span> */}
           <span>{text}</span>
           <svg
             data-accordion-icon
@@ -47,11 +41,6 @@ export default function FaqList({ text, id, description }: Props) {
       >
         <div className="p-5 border rounded-md border-gray-200 dark:border-gray-700 dark:bg-gray-900">
           <p className="mb-2 text-gray-500 dark:text-gray-400">
-            {/* Untuk menyewa mobil dari kami, Anda biasanya perlu memiliki SIM yang
-            masih berlaku serta dokumen identitas lainnya seperti KTP atau
-            paspor. Beberapa jenis mobil mungkin memiliki persyaratan tambahan,
-            seperti usia minimal pengemudi. Pastikan untuk memeriksa
-            syarat-syarat spesifik pada mobil yang Anda pilih. */}
             {description}
           </p>
         </div>

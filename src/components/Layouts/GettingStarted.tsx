@@ -16,12 +16,6 @@ export default function GettingStarted() {
           petualangan yang tak terlupakan!
         </p>
         <div className="flex justify-center">
-          {/* <a
-            href="cars"
-            className="inline-block mx-auto bg-lime-green text-sm text-white px-4 py-3 my-6 font-bold rounded hover:bg-lime-green-hover"
-          >
-            Mulai Sewa Mobil
-          </a> */}
           <GreenButton text="Mulai Sewa Mobil" style="px-4 py-3 my-6" href="cars"/>
         </div>
       </div>
