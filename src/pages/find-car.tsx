@@ -1,12 +1,20 @@
-// import { useState } from "react";
 import FooterLayout from "../components/Layouts/FooterLayout";
 import WelcomeFindCar from "../components/Layouts/WelcomeFindCar";
 import FindCarForm from "../components/Layouts/FindCar";
-import { useLogin } from "../hooks/useLogin";
+import { useContext } from "react";
+import { FindCarContex } from "../contexts/FindCarContex";
+import CarCard from "../components/Fragments/CarCard";
 
 export default function FindCar() {
+  const findCarContext = useContext(FindCarContex);
+
+  // if (findCarContext) {
+  const { filteredCars } = findCarContext!;
+  // }
+
+
+  // const { cars, setCars } = findCarContext;
   // const [cars, setCars] = useState();
-  useLogin();
 
   return (
     <main className="mb-5">
@@ -20,7 +28,20 @@ export default function FindCar() {
         <div
           id="cars-container"
           className="flex flex-wrap justify-center gap-6 gap-y-6"
-        ></div>
+        >
+          {filteredCars.map((car) => (
+            <CarCard
+              capacity={car.capacity}
+              description={car.description}
+              image={car.image}
+              manufacture={car.manufacture}
+              rentPerDay={car.rentPerDay}
+              transmission={car.transmission}
+              type={car.type}
+              year={car.year}
+            />
+          ))}
+        </div>
       </section>
 
       {/* <!-- FOOTER --> */}

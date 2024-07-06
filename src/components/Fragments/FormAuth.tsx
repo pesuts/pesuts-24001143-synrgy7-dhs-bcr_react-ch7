@@ -50,7 +50,6 @@ const FormAuth = ({ type, handleError }: Props) => {
         console.log(res);
         if (status) {
           const successResponse = res as SuccessResponse;
-          // console.log(successResponse.token);
           localStorage.setItem("token", successResponse.token);
           handleError({ isError: false });
           navigate('/dashboard');
@@ -69,12 +68,12 @@ const FormAuth = ({ type, handleError }: Props) => {
     // alert(email + " " + password);
     if (type === "register") { 
       register({ name, email, password }, (status, res) => {
-        console.log(res);
         if (status) {
-          const successResponse = res as SuccessResponse;
+          // const successResponse = res as SuccessResponse;
           // console.log(successResponse.token);
-          localStorage.setItem("token", successResponse.token);
-          handleError({isError: false});
+          // localStorage.setItem("token", successResponse.token);
+          handleError({ isError: false });
+          navigate("/login");
         }
         else { 
           const errorResponse = res as ErrorResponse;

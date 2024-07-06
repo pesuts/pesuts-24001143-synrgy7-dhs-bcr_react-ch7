@@ -12,6 +12,7 @@ import Register from "./pages/register";
 import Dashboard from "./pages/dashboard";
 import ErrorPage from "./pages/404";
 import ProtectedRoute from "./components/Fragments/ProtectedRoute";
+import FindCarProvider from "./contexts/FindCarContex";
 
 export const App = () => (
   <Router>
@@ -21,7 +22,9 @@ export const App = () => (
         path="/cars"
         element={
           <ProtectedRoute>
-            <FindCar />
+            <FindCarProvider>
+              <FindCar />
+            </FindCarProvider>
           </ProtectedRoute>
         }
       />

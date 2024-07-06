@@ -49,6 +49,26 @@ const config = {
   },
 };
 
+export const getApiCars = async () => {
+  try {
+    const response = await axios.get("https://raw.githubusercontent.com/fnurhidayat/probable-garbanzo/main/data/cars.min.json");
+    return response.data;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+  // axios.get('https://raw.githubusercontent.com/fnurhidayat/probable-garbanzo/main/data/cars.min.json')
+  // .then((response) => {
+  //   // handle success
+  //   // console.log(response);
+  //   const data = response.data;
+  //   return data;
+  // })
+  // .catch((error) => {
+  //   // handle error
+  //   console.log(error);
+  // })
+};
+
 export const getCars = async () => {
   try {
     const response = await axios.get(url, config);

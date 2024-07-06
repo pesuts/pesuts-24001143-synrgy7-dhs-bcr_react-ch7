@@ -1,13 +1,103 @@
+import { useContext, useState } from "react";
+import { FindCarContex } from "../../contexts/FindCarContex";
+
+interface Car { 
+  id: string;
+  driver: boolean;
+  plate: string;
+  manufacture: string;
+  model: string;
+  image: string;
+  rentPerDay: number;
+  capacity: number;
+  description: string;
+  transmission: string;
+  available: boolean;
+  type: string;
+  year: number;
+  options: string[];
+  specs: string[];
+  availableAt: Date;
+}
+
 export default function FindCarForm() {
+  const [driverType, setDriverType] = useState<string | undefined>();
+  const [date, setDate] = useState<string | undefined>();
+  const [time, setTime] = useState<string | undefined>();
+  const [capacity, setCapacity] = useState<string | undefined>();
+
+  const findCarContext = useContext(FindCarContex);
+
+  // if (findCarContext) {
+  const { cars, setFilteredCars } = findCarContext!;
+
+  function filterCars(
+    formDriver: boolean | "",
+    formTanggal: string | "",
+    formWaktu: string | "",
+    formPenumpang: string = ""
+  ): Car[] | undefined {
+    if (
+      formDriver !== "" &&
+      formTanggal !== "" &&
+      formWaktu !== "" &&
+      formPenumpang !== ""
+    )
+      return filterCarsWithAllParams(
+        formDriver,
+        formTanggal,
+        formWaktu,
+        formPenumpang
+      );
+    if (formDriver !== "" && formTanggal !== "" && formWaktu !== "")
+      return filterCarsWithDriverDateTime(formDriver, formTanggal, formWaktu);
+  }
+
+  function filterCarsWithAllParams(
+    formDriver: boolean,
+    formTanggal: string,
+    formWaktu: string,
+    formPenumpang: string
+  ): Car[] {
+    return cars.filter(
+      (car) =>
+        // car.driver === formDriver &&
+        car.capacity.toString() == formPenumpang &&
+        (new Date(car.availableAt).toISOString()) < (new Date(date + " " + time).toISOString())
+        // car.availableAt < new Date(formTanggal + " " + formWaktu)
+    );
+  }
+
+  function filterCarsWithDriverDateTime(
+    formDriver: boolean,
+    formTanggal: string,
+    formWaktu: string
+  ): Car[] {
+    return cars.filter(
+      // car.driver === formDriver &&
+      // car.availableAt < new Date(formTanggal + " " + formWaktu)
+      (car) => (new Date(car.availableAt).toISOString()) < (new Date(date + " " + time).toISOString())
+    );
+  }
+
+  const handleSubmit = () => { 
+    event?.preventDefault();
+
+    const data = filterCars(Boolean(driverType), date!, time!, capacity);
+    if(data) setFilteredCars(data);
+  }
+
   return (
-    <form action="">
+    <form action="" method="post" onSubmit={handleSubmit}>
       <div className="forms lg:flex justify-evenly gap-x-4">
         <div className="form-driver">
           <p>Tipe Driver</p>
           <select
             name="form-driver"
             id="form-driver"
-            className="border-gray-100 rounded-md border-2 w-full lg:w-56"
+            required={true}
+            onChange={(e) => setDriverType(e.target.value)}
+            className="border-gray-100 rounded-md border-2 w-full lg:w-56 py-2 px-4"
             // value={quantity} 
             // onChange={(e) => setQuantity(e.target.value)}
           >
@@ -25,6 +115,8 @@ export default function FindCarForm() {
             type="date"
             name="form-date"
             id="form-date"
+            required={true}
+            onChange={(e) => setDate(e.target.value)}
             className="border-gray-100 rounded-md border-2 w-full lg:w-56"
           />
         </div>
@@ -35,17 +127,20 @@ export default function FindCarForm() {
             type="time"
             name="form-time"
             id="form-time"
+            required={true}
+            onChange={(e) => setTime(e.target.value)}
             className="border-gray-100 rounded-md border-2 w-full lg:w-56"
           />
         </div>
 
         <div className="form-capacity">
-          <p>Jumlah Penupang (opsional)</p>
+          <p>Jumlah Penumpang (opsional)</p>
           <input
             type="text"
             placeholder="Jumlah Penumpang"
             name="form-capacity"
             id="form-capacity"
+            onChange={(e) => setCapacity(e.target.value)}
             className="border-gray-100 rounded-md border-2 w-full lg:w-56"
           />
         </div>
