@@ -4,6 +4,7 @@ import NavButton from "../Elements/Button/NavButton";
 import SideNavButton from "../Elements/Button/SideNavButton";
 import NavList from "../Fragments/NavList";
 import { decodeJwt, isTokenExpired } from "../../utils/jwtVerify";
+import { googleLogout } from '@react-oauth/google';
 // import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
@@ -16,7 +17,7 @@ export default function Navbar() {
   useEffect(() => {
     try {
       const token = localStorage.getItem("token");
-      if (isTokenExpired(token!)) { 
+      if (isTokenExpired(token!)) {
         setIsLogin(false);
         return;
       }
@@ -31,6 +32,7 @@ export default function Navbar() {
 
   function handleLogout() {
     localStorage.removeItem("token");
+    googleLogout();
     // navigate();
     window.location.href = "/";
   }
@@ -63,13 +65,19 @@ export default function Navbar() {
                 >
                   <p className="flex items-center gap-1">
                     {/* <UserIcon className="w-4 h-4" /> {userName} */}
-                    <span className="p-2 bg-white text-blue-800 rounded-full px-3 mx-1 font-bold">{userName[0]}</span>
+                    <span className="p-2 bg-white text-blue-800 rounded-full px-3 mx-1 font-bold">
+                      {userName[0]}
+                    </span>
                     {userName}
                   </p>
                 </a>
               )}
               {!isLogin && (
-                <CTAButton text="Registrasi" href="register" style="my-4 px-4" />
+                <CTAButton
+                  text="Registrasi"
+                  href="register"
+                  style="my-4 px-4"
+                />
               )}
               {isClicked && (
                 <div

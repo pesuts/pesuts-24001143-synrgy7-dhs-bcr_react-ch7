@@ -1,14 +1,26 @@
 import { useState } from "react";
 import InputForm from "./InputForm";
 
-import { login, SuccessResponse, ErrorResponse, register } from "../../services/auth.service";
+import {
+  login,
+  SuccessResponse,
+  ErrorResponse,
+  register,
+} from "../../services/auth.service";
 import { useNavigate } from "react-router-dom";
 import { decodeJwt } from "../../utils/jwtVerify";
+import { GoogleLogin } from "@react-oauth/google";
+
+// type OAuthSuccessResponse = {
+//   credential: string;
+//   clientId: string;
+//   select_by: string;
+// };
 
 type Error = {
   isError: boolean;
   message?: string;
-}
+};
 
 type Props = {
   type: string;
@@ -35,8 +47,8 @@ const FormAuth = ({ type, handleError }: Props) => {
 
   const handleLogin = () => {
     event?.preventDefault();
-    if (email === '' || password === '') { 
-      handleError({isError: true, message: 'Semua kolom harus terisi'});
+    if (email === "" || password === "") {
+      handleError({ isError: true, message: "Semua kolom harus terisi" });
       return;
     }
 
@@ -52,21 +64,20 @@ const FormAuth = ({ type, handleError }: Props) => {
           if (payload.role === "superadmin" || payload.role === "admin") {
             window.location.href = "/dashboard";
           }
-          if (payload.role === "user") { 
+          if (payload.role === "user") {
             navigate("/");
           }
-        }
-        else { 
+        } else {
           const errorResponse = res as ErrorResponse;
-          handleError({isError: true, message: errorResponse.message});
+          handleError({ isError: true, message: errorResponse.message });
           console.log(errorResponse.message);
           return;
         }
       });
       return;
     }
-    if (type === "register") { 
-      if (password.length < 8) { 
+    if (type === "register") {
+      if (password.length < 8) {
         handleError({ isError: true, message: "Password minimal 8 karakter" });
         setPassword("");
         return;
@@ -75,20 +86,17 @@ const FormAuth = ({ type, handleError }: Props) => {
         if (status) {
           handleError({ isError: false });
           navigate("/login");
-        }
-        else { 
+        } else {
           const errorResponse = res as ErrorResponse;
-          handleError({isError: true, message: errorResponse.message});
+          handleError({ isError: true, message: errorResponse.message });
           console.log(errorResponse.message);
           setEmail("");
           setPassword("");
           return;
         }
-      }
-      );
+      });
     }
     return;
-
   };
 
   return (
@@ -121,12 +129,26 @@ const FormAuth = ({ type, handleError }: Props) => {
         mandatory={true}
         handleInput={handlePassword}
       />
-      <button
-        type="submit"
-        className="w-full bg-blue-bcr text-white p-2 rounded hover:bg-dark-blue-bcr"
-      >
-        {type === "login" ? "Log In" : "Daftar"}
-      </button>
+      <div className="flex items-center gap-6 my-4">
+        <button
+          type="submit"
+          className="w-full bg-blue-bcr text-white p-2 rounded hover:bg-dark-blue-bcr"
+        >
+          {type === "login" ? "Log In" : "Daftar"}
+        </button>
+        <div className="outline outline-gray-300 outline-[1px] shadow-lg">
+          <GoogleLogin
+            onSuccess={(credentialResponse) => {
+              if (credentialResponse.credential)
+                localStorage.setItem("token", credentialResponse.credential);
+              navigate("/");
+            }}
+            onError={() => {
+              handleError({ isError: true, message: "Login failed!" });
+            }}
+          ></GoogleLogin>
+        </div>
+      </div>
     </form>
   );
 };
