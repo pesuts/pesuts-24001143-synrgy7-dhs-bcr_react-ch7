@@ -31,4 +31,4 @@ export default {
 
 ## Backend
 
-https://github.com/pesuts/ch7-backend
+https://github.com/pesuts/24001143-synrgy7-dhs-bcr_api_docs-ch6
