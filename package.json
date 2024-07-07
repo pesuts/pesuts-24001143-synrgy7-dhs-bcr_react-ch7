@@ -11,16 +11,21 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.1.4",
+    "@rollup/plugin-inject": "^5.0.5",
     "axios": "^1.7.2",
     "base64-url": "^2.3.3",
+    "flowbite": "^2.4.1",
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-modal": "^3.16.1",
+    "react-owl-carousel": "^2.3.3",
     "react-router-dom": "^6.24.0"
   },
   "devDependencies": {
     "@types/base64-url": "^2.2.2",
+    "@types/jquery": "^3.5.30",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20.14.9",
     "@types/react": "^18.3.3",

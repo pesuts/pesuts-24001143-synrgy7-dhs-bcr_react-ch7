@@ -1,4 +1,4 @@
-import GreenButton from "../Elements/Button/GreenButton";
+import CTAButton from "../Elements/Button/CTAButton";
 
 export default function GettingStarted() {
   return (
@@ -16,7 +16,11 @@ export default function GettingStarted() {
           petualangan yang tak terlupakan!
         </p>
         <div className="flex justify-center">
-          <GreenButton text="Mulai Sewa Mobil" style="px-4 py-3 my-6" href="cars"/>
+          <CTAButton
+            text="Mulai Sewa Mobil"
+            style="px-4 py-3 my-6"
+            href="cars"
+          />
         </div>
       </div>
     </section>

@@ -1,6 +1,34 @@
 import FaqList from "../Fragments/FaqList";
 
 export default function Faq() {
+  const faqList = [
+    {
+      text: "Apa saja syarat yang dibutuhkan?",
+      description:
+        "Untuk menyewa mobil dari kami, Anda biasanya perlu memiliki SIM yang masih berlaku serta dokumen identitas lainnya seperti KTP atau paspor. Beberapa jenis mobil mungkin memiliki persyaratan tambahan, seperti usia minimal pengemudi. Pastikan untuk memeriksa syarat-syarat spesifik pada mobil yang Anda pilih.",
+    },
+    {
+      text: "Berapa Hari minimal sewa mobil lepas kunci?",
+      description:
+        "Biasanya, kami memiliki kebijakan sewa minimal untuk mobil lepas kunci. Durasi sewa minimal ini bisa bervariasi tergantung pada jenis mobil dan musim sewa. Untuk informasi lebih lanjut mengenai durasi sewa minimal, silakan hubungi kami atau cek pada spesifikasi mobil yang Anda pilih.",
+    },
+    {
+      text: "Berapa hari sebelumnya sebaiknya booking sewa mobil?",
+      description:
+        "Untuk memastikan ketersediaan mobil pada tanggal yang Anda inginkan, sebaiknya Anda melakukan pemesanan secepat mungkin. Namun, kami juga dapat menerima pemesanan dalam waktu singkat tergantung pada ketersediaan mobil. Untuk musim liburan atau periode sibuk lainnya, disarankan untuk melakukan pemesanan beberapa minggu sebelumnya untuk memastikan Anda mendapatkan mobil yang sesuai dengan kebutuhan Anda.",
+    },
+    {
+      text: "Apakah ada biaya antar jemput?",
+      description:
+        "Ya, kami menyediakan layanan antar-jemput dengan biaya tambahan. Biaya ini akan bervariasi tergantung lokasi penjemputan dan pengantaran. Untuk informasi lebih lanjut mengenai biaya antar-jemput, silakan hubungi tim layanan pelanggan kami.",
+    },
+    {
+      text: "Bagaimana jika terjadi kecelakaan?",
+      description:
+        "Jika terjadi kecelakaan, segera hubungi tim darurat kami dan laporkan insiden tersebut. Kami akan memberikan panduan langkah-langkah yang harus diambil, termasuk pertukaran informasi dengan pihak terkait dan pelaporan ke pihak asuransi. Pastikan untuk membaca dan memahami ketentuan asuransi yang terkait dengan penyewaan mobil Anda.",
+    },
+  ];
+
   return (
     <section
       className="faq p-5 my-8 lg:mx-28 lg:flex lg:gap-6 lg:justify-between"
@@ -29,53 +57,14 @@ export default function Faq() {
         id="accordion-collapse"
         data-accordion="collapse"
       >
-        <FaqList
-          text="Apa saja syarat yang dibutuhkan?"
-          id="accordion-collapse-heading-1"
-          description="Untuk menyewa mobil dari kami, Anda biasanya perlu memiliki SIM
-              yang masih berlaku serta dokumen identitas lainnya seperti KTP
-              atau paspor. Beberapa jenis mobil mungkin memiliki persyaratan
-              tambahan, seperti usia minimal pengemudi. Pastikan untuk memeriksa
-              syarat-syarat spesifik pada mobil yang Anda pilih."
-        />
-        <FaqList
-          text="Berapa Hari minimal sewa mobil lepas kunci?"
-          id="accordion-collapse-heading-2"
-          description="Biasanya, kami memiliki kebijakan sewa minimal untuk mobil lepas
-              kunci. Durasi sewa minimal ini bisa bervariasi tergantung pada
-              jenis mobil dan musim sewa. Untuk informasi lebih lanjut mengenai
-              durasi sewa minimal, silakan hubungi kami atau cek pada
-              spesifikasi mobil yang Anda pilih."
-        />
-        <FaqList
-          text="Berapa hari sebelumnya sebaiknya booking sewa mobil?"
-          id="accordion-collapse-heading-3"
-          description="Untuk memastikan ketersediaan mobil pada tanggal yang Anda
-              inginkan, sebaiknya Anda melakukan pemesanan secepat mungkin.
-              Namun, kami juga dapat menerima pemesanan dalam waktu singkat
-              tergantung pada ketersediaan mobil. Untuk musim liburan atau
-              periode sibuk lainnya, disarankan untuk melakukan pemesanan
-              beberapa minggu sebelumnya untuk memastikan Anda mendapatkan mobil
-              yang sesuai dengan kebutuhan Anda."
-        />
-        <FaqList
-          text="Apakah ada biaya antar jemput?"
-          id="accordion-collapse-heading-4"
-          description="Ya, kami menyediakan layanan antar-jemput dengan biaya tambahan.
-              Biaya ini akan bervariasi tergantung lokasi penjemputan dan
-              pengantaran. Untuk informasi lebih lanjut mengenai biaya
-              antar-jemput, silakan hubungi tim layanan pelanggan kami."
-        />
-        <FaqList
-          text="Bagaimana jika terjadi kecelakaan?"
-          id="accordion-collapse-heading-5"
-          description="Jika terjadi kecelakaan, segera hubungi tim darurat kami dan
-              laporkan insiden tersebut. Kami akan memberikan panduan
-              langkah-langkah yang harus diambil, termasuk pertukaran informasi
-              dengan pihak terkait dan pelaporan ke pihak asuransi. Pastikan
-              untuk membaca dan memahami ketentuan asuransi yang terkait dengan
-              penyewaan mobil Anda."
-        />
+        {faqList.map((faq, index) => (
+          <FaqList
+            key={index+1}
+            text={faq.text}
+            // id={faq.id}
+            description={faq.description}
+          />
+        ))}
       </div>
     </section>
   );

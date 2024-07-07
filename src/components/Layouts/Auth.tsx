@@ -51,14 +51,16 @@ export default function Auth({
                 : "Selamat Datang di BCR"}
             </h2>
             {error.isError && (
-              <p className="text-center bg-red-100 text-red-700 font-semibold px-4 py-2
+              <p className="text-center bg-red-200 text-red-700 font-semibold px-4 py-2
                 my-3 rounded-sm outline outline-red-500 outline-[1px] relative">
                 {/* Account not found! */}
                 { error.message || "Masukkan email dan password yang benar." }
                 <span
                   onClick={() => setError({isError: false})}
-                  className="absolute top-0 right-0 px-2 
-                  text-red-800 font-bold hover:font-extrabold cursor-pointer">x</span>
+                  className="absolute top-0 right-0 px-2 text-md
+                  text-red-900 font-bold hover:font-extrabold cursor-pointer">
+                  x
+                </span>
               </p>
             )}
             <p className="mb-4">

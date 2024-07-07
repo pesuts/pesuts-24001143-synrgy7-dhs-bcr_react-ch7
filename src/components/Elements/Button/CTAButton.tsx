@@ -1,0 +1,28 @@
+import { Link } from "react-router-dom";
+
+type Props = {
+  text: string;
+  href: string;
+  style?: string;
+};
+
+export default function CTAButton({ text, href, style }: Props) {
+  // const defaultClassName =
+    // "inline-block mx-auto bg-lime-green text-sm text-white px-3 py-2 font-bold rounded hover:bg-lime-green";
+  // const combinedClassName = `${defaultClassName} ${style || ""}`.trim();
+  return (
+    <Link to={`/${href}`}
+      // className={combinedClassName}
+      className={`inline-block mx-auto bg-lime-green text-sm text-white px-3 py-2 
+        font-bold rounded hover:bg-lime-green ${style || ''}`.trim()}
+    >
+      {text}
+    </Link>
+    // <a
+    //   className={combinedClassName}
+    //   href={`/${href}`}
+    // >
+    //   {text}
+    // </a>
+  );
+}

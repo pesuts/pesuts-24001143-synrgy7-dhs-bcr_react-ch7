@@ -87,7 +87,7 @@ export default function FindCarForm() {
     <form action="" method="post" onSubmit={handleSubmit}>
       <div className="forms lg:flex justify-evenly gap-x-4">
         <div className="form-driver">
-          <p>Tipe Driver</p>
+          <p className="mb-2">Tipe Driver</p>
           <select
             name="form-driver"
             id="form-driver"
@@ -106,38 +106,38 @@ export default function FindCarForm() {
         </div>
 
         <div className="form-date">
-          <p>Tanggal</p>
+          <p className="mb-2">Tanggal</p>
           <input
             type="date"
             name="form-date"
             id="form-date"
             required={true}
             onChange={(e) => setDate(e.target.value)}
-            className="border-gray-100 rounded-md border-2 w-full lg:w-56"
+            className="border-gray-100 rounded-md border-2 w-full lg:w-56 py-2 px-4"
           />
         </div>
 
         <div className="form-time">
-          <p>Waktu Jemput/Ambil</p>
+          <p className="mb-2">Waktu Jemput/Ambil</p>
           <input
             type="time"
             name="form-time"
             id="form-time"
             required={true}
             onChange={(e) => setTime(e.target.value)}
-            className="border-gray-100 rounded-md border-2 w-full lg:w-56"
+            className="border-gray-100 rounded-md border-2 w-full lg:w-56 py-2 px-4"
           />
         </div>
 
         <div className="form-capacity">
-          <p>Jumlah Penumpang (opsional)</p>
+          <p className="mb-2">Jumlah Penumpang (opsional)</p>
           <input
             type="text"
             placeholder="Jumlah Penumpang"
             name="form-capacity"
             id="form-capacity"
             onChange={(e) => setCapacity(e.target.value)}
-            className="border-gray-100 rounded-md border-2 w-full lg:w-56"
+            className="border-gray-100 rounded-md border-2 w-full lg:w-56 py-2 px-4"
           />
         </div>
         <div className="flex items-end">

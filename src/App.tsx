@@ -1,7 +1,4 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-// import { CarsProvider } from './contexts/CarsContext';
+import { createBrowserRouter, RouterProvider, Route, createRoutesFromElements } from "react-router-dom";
 import LandingPage from "./pages/landing-page";
 import FindCar from "./pages/find-car";
 import Login from "./pages/login";
@@ -11,12 +8,13 @@ import DashboardForm from "./components/Layouts/Dashboard/DashboardForm";
 import Register from "./pages/register";
 import Dashboard from "./pages/dashboard";
 import ErrorPage from "./pages/404";
-import ProtectedRoute from "./components/Fragments/ProtectedRoute";
+import ProtectedRoute from "./middleware/ProtectedRoute";
+import ProtectedAdminRoute from "./middleware/ProtectedAdminRoute";
 import FindCarProvider from "./contexts/FindCarContex";
 
-export const App = () => (
-  <Router>
-    <Routes>
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <>
       <Route path="/" element={<LandingPage />} />
       <Route
         path="/cars"
@@ -34,9 +32,11 @@ export const App = () => (
         path="/dashboard"
         element={
           <ProtectedRoute>
-            <Dashboard title="Dashboard">
-              <DashboardTable />
-            </Dashboard>
+            <ProtectedAdminRoute>
+              <Dashboard title="Dashboard" type="Dashboard">
+                <DashboardTable />
+              </Dashboard>
+            </ProtectedAdminRoute>
           </ProtectedRoute>
         }
       />
@@ -44,9 +44,11 @@ export const App = () => (
         path="/dashboard/cars"
         element={
           <ProtectedRoute>
-            <Dashboard title="List Cars">
-              <DashboardCars />
-            </Dashboard>
+            <ProtectedAdminRoute>
+              <Dashboard title="List Cars" type="Cars">
+                <DashboardCars />
+              </Dashboard>
+            </ProtectedAdminRoute>
           </ProtectedRoute>
         }
       />
@@ -54,9 +56,11 @@ export const App = () => (
         path="/dashboard/cars/add"
         element={
           <ProtectedRoute>
-            <Dashboard title="Add Cars">
-              <DashboardForm />
-            </Dashboard>
+            <ProtectedAdminRoute>
+              <Dashboard title="Add Cars" type="Cars">
+                <DashboardForm />
+              </Dashboard>
+            </ProtectedAdminRoute>
           </ProtectedRoute>
         }
       />
@@ -64,15 +68,21 @@ export const App = () => (
         path="/dashboard/cars/edit/:id"
         element={
           <ProtectedRoute>
-            <Dashboard title="Edit Cars">
-              <DashboardForm />
-            </Dashboard>
+            <ProtectedAdminRoute>
+              <Dashboard title="Edit Cars" type="Cars">
+                <DashboardForm />
+              </Dashboard>
+            </ProtectedAdminRoute>
           </ProtectedRoute>
         }
       />
       <Route path="*" element={<ErrorPage />} />
-    </Routes>
-  </Router>
+    </>
+  )
+);
+
+export const App = () => (
+  <RouterProvider router={router} />
 );
 
 export default App;

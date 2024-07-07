@@ -3,6 +3,7 @@ import InputForm from "./InputForm";
 
 import { login, SuccessResponse, ErrorResponse, register } from "../../services/auth.service";
 import { useNavigate } from "react-router-dom";
+import { decodeJwt } from "../../utils/jwtVerify";
 
 type Error = {
   isError: boolean;
@@ -41,17 +42,25 @@ const FormAuth = ({ type, handleError }: Props) => {
 
     if (type === "login") {
       login({ email, password }, (status, res) => {
-        console.log(res);
+        // console.log(res);
         if (status) {
           const successResponse = res as SuccessResponse;
           localStorage.setItem("token", successResponse.token);
           handleError({ isError: false });
-          navigate('/dashboard');
+          const token = localStorage.getItem("token");
+          const payload = decodeJwt(token!);
+          if (payload.role === "superadmin" || payload.role === "admin") {
+            window.location.href = "/dashboard";
+          }
+          if (payload.role === "user") { 
+            navigate("/");
+          }
         }
         else { 
           const errorResponse = res as ErrorResponse;
           handleError({isError: true, message: errorResponse.message});
           console.log(errorResponse.message);
+          return;
         }
       });
       return;
@@ -59,6 +68,10 @@ const FormAuth = ({ type, handleError }: Props) => {
     if (type === "register") { 
       register({ name, email, password }, (status, res) => {
         if (status) {
+          if (password.length < 8) { 
+            handleError({ isError: true, message: "Password minimal 8 karakter" });
+            return;
+          }
           handleError({ isError: false });
           navigate("/login");
         }
@@ -66,9 +79,12 @@ const FormAuth = ({ type, handleError }: Props) => {
           const errorResponse = res as ErrorResponse;
           handleError({isError: true, message: errorResponse.message});
           console.log(errorResponse.message);
+          return;
         }
-      });
+      }
+      );
     }
+    return;
 
   };
 
@@ -80,6 +96,7 @@ const FormAuth = ({ type, handleError }: Props) => {
           type="text"
           placeholder="Masukkan nama"
           style="mb-4"
+          mandatory={true}
           handleInput={handleName}
         />
       )}
@@ -88,6 +105,7 @@ const FormAuth = ({ type, handleError }: Props) => {
         type="email"
         placeholder="Masukkan email"
         style="mb-4"
+        mandatory={true}
         handleInput={handleEmail}
       />
       <InputForm
@@ -95,11 +113,12 @@ const FormAuth = ({ type, handleError }: Props) => {
         type="password"
         placeholder="Masukkan password"
         style="mb-4"
+        mandatory={true}
         handleInput={handlePassword}
       />
       <button
         type="submit"
-        className="w-full bg-[#0C28A5] text-white p-2 rounded hover:bg-[#081B6E]"
+        className="w-full bg-blue-bcr text-white p-2 rounded hover:bg-dark-blue-bcr"
       >
         {type === "login" ? "Log In" : "Daftar"}
       </button>

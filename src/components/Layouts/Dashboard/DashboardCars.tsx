@@ -20,7 +20,7 @@ export default function DashboardCars() {
           onClick={() => {
             window.location.href = "/dashboard/cars/add";
           }}
-          className="bg-[#0C28A5] text-white font-bold items-end justify-end pb-3 pt-2 
+          className="bg-blue-bcr text-white font-bold items-end justify-end pb-3 pt-2 
             px-4 rounded-md hover:bg-[#081B6E]"
         >
           <span className="text-xl me-2">+</span> Add New Car

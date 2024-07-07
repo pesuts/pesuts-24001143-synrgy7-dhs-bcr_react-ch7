@@ -8,10 +8,10 @@ export default function Testimony({ person, picture, testimony }: Props) {
   return (
     <div className="item mx-3">
       <div className="bg-light-blue rounded-xl px-14 py-12 lg:py-20 lg:flex lg:gap-12 lg:items-center lg:justify-center">
-        <div className=" lg:align-items-center lg:justify-content-center lg:w-2/12">
+        <div className=" lg:align-items-center lg:justify-content-center lg:w-4/12">
           <img
             src={`img/png/${picture}.png`}
-            className="mx-auto rounded-full object-cover h-20 w-20 lg:w-40"
+            className="mx-auto rounded-full object-cover h-20 w-20 lg:w-24 lg:h-24"
             alt="User 1"
           />
         </div>
@@ -19,7 +19,7 @@ export default function Testimony({ person, picture, testimony }: Props) {
           <div className="lg:-ms-[73%]">
             <img
               src="img/png/5_stars.png"
-              className="lg:pb-2 mx-auto py-6"
+              className="lg:pb-2 ms-[320px] py-6"
               width="100"
               alt=""
             />

@@ -20,7 +20,7 @@ const Contact = ({ text }: Props) => {
 const NavButton = ({ text }: Props) => {
   return (
     <li className="py-2 font-semibold">
-      <a href={`#${text.toLowerCase().replace(" ", "-")}`}
+      <a href={`/#${text.toLowerCase().replace(" ", "-")}`}
         className="text-decoration-none text-black">
       {text}
     </a>

@@ -41,7 +41,7 @@ const InputForm: React.FC<Props> = ({
     if (type === "file") {
       if (event.target.files && event.target.files[0]) {
         const file = event.target.files[0];
-        const maxSize = 1 * 1024 * 1024; // 1MB
+        const maxSize = 2 * 1024 * 1024; // 1MB
         const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
 
         if (file.size > maxSize) {

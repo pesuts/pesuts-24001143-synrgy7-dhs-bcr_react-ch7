@@ -1,39 +1,17 @@
 import Table from "../../Fragments/Dashboard/Table";
 import TableHeader from "../../Fragments/Dashboard/TableHeader";
 import TableContent from "../../Fragments/Dashboard/TableContent";
-import { getCars } from "../../../services/car.service";
-import { useEffect, useState } from "react";
-
-type Car = {
-  id: number;
-  model: string;
-  manufacture: string;
-  plate: string;
-  image_url: string;
-  price: number;
-  category: string;
-  created_at: Date;
-  updated_at: Date;
-  available: boolean;
-};
+import { useContext } from "react";
+import { CarsContext } from "../../../contexts/CarsContext";
 
 export default function DashboardTable() {
-  const [cars, setCars] = useState<Car[]>([]);
+  const carsContext = useContext(CarsContext);
 
-  useEffect(() => {
-    const getCarsState = async () => {
-      try {
-        const result = await getCars();
-        // console.log(result);
-        setCars(result!);
-        console.log("nigga");
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  if (!carsContext) {
+    return null;
+  }
 
-    getCarsState();
-  }, []);
+  const { cars } = carsContext;
 
   const columns = [
     "Id",
@@ -98,7 +76,6 @@ export default function DashboardTable() {
     <Table>
       <TableHeader columns={columns} />
       <TableContent cars={cars} />
-      {/* <TableContent rows={rows}/> */}
     </Table>
   );
 }

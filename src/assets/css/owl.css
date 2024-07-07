@@ -26,3 +26,7 @@
 .owl-dots {
   display: none;
 }
+
+.bg-light-blue {
+  background-color: rgba(241, 243, 255, 1);
+}

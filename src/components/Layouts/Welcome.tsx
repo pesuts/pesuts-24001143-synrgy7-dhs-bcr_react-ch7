@@ -1,4 +1,4 @@
-import GreenButton from "../Elements/Button/GreenButton";
+import CTAButton from "../Elements/Button/CTAButton";
 import Hero from "../Fragments/Hero";
 import Navbar from "./Navbar";
 
@@ -10,7 +10,7 @@ export default function Welcome() {
         <Navbar />
         {/* <Hero /> */}
         <Hero>
-          <GreenButton
+          <CTAButton
             text="Mulai Sewa Mobil"
             href="cars"
             style="lg:mt-4 lg:mb-20"

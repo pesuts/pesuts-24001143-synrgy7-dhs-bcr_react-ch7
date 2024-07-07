@@ -59,9 +59,10 @@ const FormDashboard = ({ car }: Props) => {
     setPlate(car?.plate);
     setBrand(car?.manufacture);
     setPrice(car?.price?.toString());
-    if (!carCategory) {
-      setCarCategory(car?.category);
-    }
+    setCarCategory(car?.category);
+    // if (!carCategory) {
+    //   setCarCategory(car?.category);
+    // }
     setCreatedAt(car?.created_at);
     setUpdatedAt(car?.updated_at);
     if (car?.image_url) {
@@ -138,6 +139,7 @@ const FormDashboard = ({ car }: Props) => {
   const carCategories = [
     "Sedan",
     "SUV",
+    "MPV",
     "Hatchback",
     "Minivan",
     "Convertible",
@@ -171,7 +173,7 @@ const FormDashboard = ({ car }: Props) => {
               mandatory={true}
               placeholder="Masukkan Model / Nama"
               style="mb-4 justify-between flex items-center"
-              styleInput="w-[60%]"
+              styleInput="w-[300px]"
               handleInput={handleModel}
             />
             <InputForm
@@ -182,7 +184,7 @@ const FormDashboard = ({ car }: Props) => {
               mandatory={true}
               placeholder="Masukkan Plat Nomor"
               style="mb-4 justify-between flex items-center"
-              styleInput="w-[60%]"
+              styleInput="w-[300px]"
               handleInput={handlePlate}
             />
             <InputForm
@@ -193,7 +195,7 @@ const FormDashboard = ({ car }: Props) => {
               mandatory={true}
               placeholder="Masukkan Merek"
               style="mb-4 justify-between flex items-center"
-              styleInput="w-[60%]"
+              styleInput="w-[300px]"
               handleInput={handleBrand}
             />
             <InputForm
@@ -205,7 +207,7 @@ const FormDashboard = ({ car }: Props) => {
               mandatory={true}
               placeholder="Masukkan harga"
               style="mb-4 justify-between flex items-center"
-              styleInput="w-[60%]"
+              styleInput="w-[300px]"
               handleInput={handlePrice}
             />
             <div className="mb-4 justify-between flex items-center">
@@ -214,7 +216,7 @@ const FormDashboard = ({ car }: Props) => {
                 <span className="text-red-700">*</span>
               </label>
               <select
-                className="w-[60%] mt-2 p-2 border border-gray-300 rounded text-gray-500"
+                className="w-[300px] mt-2 p-2 border border-gray-300 rounded text-gray-500"
                 value={carCategory}
                 onChange={(e) => {
                   setCarCategory(e.target.value);
@@ -231,12 +233,12 @@ const FormDashboard = ({ car }: Props) => {
               mandatory={false}
               placeholder="Masukkan file foto"
               style="mb-6 justify-between flex items-center"
-              styleInput="w-[60%]"
+              styleInput="w-[300px]"
               accept="image/*"
               handleInputFile={handleFileChange}
             />
-            <p className="text-gray-400 text-sm ms-[40%] -mt-4">
-              File Size Max, 1 MB
+            <p className="text-gray-400 text-sm ms-[38%] -mt-6">
+              File Size Max, 2 MB
             </p>
             {previewURL && (
               <div className="ms-[40%] w-[200px] mb-4">
@@ -253,14 +255,14 @@ const FormDashboard = ({ car }: Props) => {
               type="text"
               disabled={true}
               style="mb-4 justify-between flex items-center"
-              styleInput="w-[60%] border-0"
+              styleInput="w-[300px] border-0"
             />
             <InputForm
               label="Finish Rent"
               name="Finish Rent"
               disabled={true}
               style="mb-4 justify-between flex items-center"
-              styleInput="w-[60%] border-0"
+              styleInput="w-[300px] border-0"
             />
             <InputForm
               value={formatDateInput(new Date(createdAt!))}
@@ -269,7 +271,7 @@ const FormDashboard = ({ car }: Props) => {
               name="Created At"
               disabled={true}
               style="mb-4 justify-between flex items-center"
-              styleInput="w-[60%] border-0"
+              styleInput="w-[300px] border-0"
             />
             <InputForm
               value={formatDateInput(new Date(updatedAt!))}
@@ -278,21 +280,21 @@ const FormDashboard = ({ car }: Props) => {
               type="date"
               disabled={true}
               style="mb-4 justify-between flex items-center"
-              styleInput="w-[60%] border-0"
+              styleInput="w-[300px] border-0"
             />
             <div className="flex w-6/12 gap-8 mt-20">
               <a
                 onClick={() => {
                   window.location.href = "/dashboard/cars";
                 }}
-                className="w-full cursor-pointer text-center outline-[#0C28A5] outline outline-[2.5px] text-[#0C28A5] 
+                className="w-full cursor-pointer text-center outline-blue-bcr outline outline-[2.5px] text-blue-bcr 
               p-2 rounded font-bold bg-white hover:bg-[#081B6E] hover:text-white"
               >
                 Cancel
               </a>
               <button
                 type="submit"
-                className="w-full bg-[#0C28A5] text-white font-bold p-2 rounded hover:bg-[#081B6E]"
+                className="w-full bg-blue-bcr text-white font-bold p-2 rounded hover:bg-[#081B6E]"
               >
                 Save
               </button>

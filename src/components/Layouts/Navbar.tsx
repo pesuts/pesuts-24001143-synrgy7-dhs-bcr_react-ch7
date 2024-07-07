@@ -1,9 +1,40 @@
-import GreenButton from "../Elements/Button/GreenButton";
+import { useEffect, useState } from "react";
+import CTAButton from "../Elements/Button/CTAButton";
 import NavButton from "../Elements/Button/NavButton";
 import SideNavButton from "../Elements/Button/SideNavButton";
 import NavList from "../Fragments/NavList";
+import { decodeJwt, isTokenExpired } from "../../utils/jwtVerify";
+// import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  const [isClicked, setIsClicked] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
+  const [userName, setUserName] = useState<string>("");
+
+  // const navigate = useNavigate()
+
+  useEffect(() => {
+    try {
+      const token = localStorage.getItem("token");
+      if (isTokenExpired(token!)) { 
+        setIsLogin(false);
+        return;
+      }
+      const payload = decodeJwt(token!);
+      setUserName(payload.name);
+      setIsLogin(true);
+    } catch (error) {
+      setIsLogin(false);
+      console.error("Error decoding JWT:", error);
+    }
+  }, []);
+
+  function handleLogout() {
+    localStorage.removeItem("token");
+    // navigate();
+    window.location.href = "/";
+  }
+
   return (
     <nav className="border-gray-200 dark:bg-gray-900 dark:border-gray-700 lg:mx-28">
       <div className="max-w-[100%] flex flex-wrap items-center justify-between mx-auto py-4 lg:p-4">
@@ -24,7 +55,35 @@ export default function Navbar() {
               <NavButton text="FAQ" />
             </NavList>
             <NavList>
-              <GreenButton text="Register" href="register" />
+              {/* <CTAButton text="Register" href="register" /> */}
+              {isLogin && (
+                <a
+                  onClick={() => setIsClicked(!isClicked)}
+                  className="inline-block mx-auto bg-blue-bcr text-sm text-white px-3 py-2 font-bold rounded hover:bg-lime-green-hove cursor-pointer hover:bg-blue-950"
+                >
+                  <p className="flex items-center gap-1">
+                    {/* <UserIcon className="w-4 h-4" /> {userName} */}
+                    <span className="p-2 bg-white text-blue-800 rounded-full px-3 mx-1 font-bold">{userName[0]}</span>
+                    {userName}
+                  </p>
+                </a>
+              )}
+              {!isLogin && (
+                <CTAButton text="Registrasi" href="register" style="my-4 px-4" />
+              )}
+              {isClicked && (
+                <div
+                  className="outline-blue-bcr outline outline-[2px] dropdown-menu absolute 
+              right-[135px] top-18 mt-2 w-48 bg-white rounded-md shadow-lg py-1"
+                >
+                  <a
+                    onClick={() => handleLogout()}
+                    className="block px-4 py-2 text-gray-700 hover:hover:bg-blue-bcr hover:text-white"
+                  >
+                    Logout
+                  </a>
+                </div>
+              )}
             </NavList>
           </ul>
         </div>
@@ -94,7 +153,7 @@ export default function Navbar() {
           <SideNavButton text="Why US" />
           <SideNavButton text="Testimonial" />
           <SideNavButton text="FAQ" />
-          <GreenButton text="Registrasi" href="#" style="my-4 px-4"/>
+          <CTAButton text="Registrasi" href="register" />
         </div>
       </div>
     </nav>
