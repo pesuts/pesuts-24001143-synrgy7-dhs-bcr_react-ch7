@@ -173,7 +173,7 @@ const FormDashboard = ({ car }: Props) => {
               mandatory={true}
               placeholder="Masukkan Model / Nama"
               style="mb-4 justify-between flex items-center"
-              styleInput="w-[301px]"
+              styleInput="w-[300px]"
               handleInput={handleModel}
             />
             <InputForm
@@ -184,7 +184,7 @@ const FormDashboard = ({ car }: Props) => {
               mandatory={true}
               placeholder="Masukkan Plat Nomor"
               style="mb-4 justify-between flex items-center"
-              styleInput="w-[301px]"
+              styleInput="w-[300px]"
               handleInput={handlePlate}
             />
             <InputForm
@@ -195,7 +195,7 @@ const FormDashboard = ({ car }: Props) => {
               mandatory={true}
               placeholder="Masukkan Merek"
               style="mb-4 justify-between flex items-center"
-              styleInput="w-[301px]"
+              styleInput="w-[300px]"
               handleInput={handleBrand}
             />
             <InputForm
@@ -207,7 +207,7 @@ const FormDashboard = ({ car }: Props) => {
               mandatory={true}
               placeholder="Masukkan harga"
               style="mb-4 justify-between flex items-center"
-              styleInput="w-[301px]"
+              styleInput="w-[300px]"
               handleInput={handlePrice}
             />
             <div className="mb-4 justify-between flex items-center">
@@ -216,7 +216,7 @@ const FormDashboard = ({ car }: Props) => {
                 <span className="text-red-700">*</span>
               </label>
               <select
-                className="w-[301px] mt-2 p-2 border border-gray-300 rounded text-gray-500"
+                className="w-[300px] mt-2 p-2 border border-gray-300 rounded text-gray-500"
                 value={carCategory}
                 onChange={(e) => {
                   setCarCategory(e.target.value);
@@ -233,7 +233,7 @@ const FormDashboard = ({ car }: Props) => {
               mandatory={false}
               placeholder="Masukkan file foto"
               style="mb-6 justify-between flex items-center"
-              styleInput="w-[301px]"
+              styleInput="w-[300px]"
               accept="image/*"
               handleInputFile={handleFileChange}
             />
@@ -255,14 +255,14 @@ const FormDashboard = ({ car }: Props) => {
               type="text"
               disabled={true}
               style="mb-4 justify-between flex items-center"
-              styleInput="w-[301px] border-0"
+              styleInput="w-[300px] border-0"
             />
             <InputForm
               label="Finish Rent"
               name="Finish Rent"
               disabled={true}
               style="mb-4 justify-between flex items-center"
-              styleInput="w-[301px] border-0"
+              styleInput="w-[300px] border-0"
             />
             <InputForm
               value={formatDateInput(new Date(createdAt!))}
@@ -271,7 +271,7 @@ const FormDashboard = ({ car }: Props) => {
               name="Created At"
               disabled={true}
               style="mb-4 justify-between flex items-center"
-              styleInput="w-[301px] border-0"
+              styleInput="w-[300px] border-0"
             />
             <InputForm
               value={formatDateInput(new Date(updatedAt!))}
@@ -280,7 +280,7 @@ const FormDashboard = ({ car }: Props) => {
               type="date"
               disabled={true}
               style="mb-4 justify-between flex items-center"
-              styleInput="w-[301px] border-0"
+              styleInput="w-[300px] border-0"
             />
             <div className="flex w-6/12 gap-8 mt-20">
               <a
