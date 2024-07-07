@@ -5,14 +5,11 @@ import SideNavButton from "../Elements/Button/SideNavButton";
 import NavList from "../Fragments/NavList";
 import { decodeJwt, isTokenExpired } from "../../utils/jwtVerify";
 import { googleLogout } from '@react-oauth/google';
-// import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [isClicked, setIsClicked] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [userName, setUserName] = useState<string>("");
-
-  // const navigate = useNavigate()
 
   useEffect(() => {
     try {
@@ -33,7 +30,6 @@ export default function Navbar() {
   function handleLogout() {
     localStorage.removeItem("token");
     googleLogout();
-    // navigate();
     window.location.href = "/";
   }
 
@@ -124,7 +120,6 @@ export default function Navbar() {
         <div
           id="drawer-right-example"
           className="fixed top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform translate-x-full bg-white w-60 dark:bg-gray-800"
-          //  tabindex="-1"
           tabIndex={-1}
           aria-labelledby="drawer-right-label"
         >

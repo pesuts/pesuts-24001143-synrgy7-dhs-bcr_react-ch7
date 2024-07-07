@@ -1,15 +1,7 @@
 import axios from "axios";
 
-// URL endpoint API
-// const url = "http://localhost:3000/api/cars/";
-
-// import dotenv from 'dotenv';
-
-// dotenv.config();
-// const url = process.env.VITE_API_URL + "/cars/";
 const url = import.meta.env.VITE_API_URL + "/cars/";
 
-// Bearer token
 const token = localStorage.getItem("token");
 
 export type CarInput = {
@@ -45,7 +37,6 @@ export interface ErrorResponse {
   message: string;
 }
 
-// Konfigurasi permintaan
 const config = {
   headers: {
     Authorization: `Bearer ${token}`,

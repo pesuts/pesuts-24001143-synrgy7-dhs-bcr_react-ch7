@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-// import TableHeader from "./TableHeader";
 
 type Props = {
   children?: ReactNode;
@@ -9,7 +8,6 @@ export default function Table({ children }: Props) {
   return (
     <div className="bg-white rounded-lg shadow overflow-hidden">
       <table className="min-w-full divide-y divide-gray-200">
-        {/* <TableHeader columns={[]} /> */}
         {children}
       </table>
       <div className="bg-gray-100 px-6 py-3 flex items-center justify-between border-t border-gray-200">

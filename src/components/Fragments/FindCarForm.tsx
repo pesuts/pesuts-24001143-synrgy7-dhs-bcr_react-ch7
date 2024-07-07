@@ -94,8 +94,6 @@ export default function FindCarForm() {
             required={true}
             onChange={(e) => setDriverType(e.target.value)}
             className="border-gray-100 rounded-md border-2 w-full lg:w-56 py-2 px-4"
-            // value={quantity} 
-            // onChange={(e) => setQuantity(e.target.value)}
           >
             <option value="" hidden>
               Pilih Tipe Driver

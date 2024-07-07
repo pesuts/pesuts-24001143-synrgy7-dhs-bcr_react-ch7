@@ -1,12 +1,5 @@
-// type OnClickedProfile = () => void;
-
 import { IdentificationIcon, TruckIcon } from "@heroicons/react/24/solid";
 import DashboardNavButton from "../../Elements/Button/DashboardNavButton";
-
-// type Props = {
-  // title: string;
-  // onClickedProfile: (isClicked: boolean) => void;
-// };
 
 export default function DashboardNav() {
   return (

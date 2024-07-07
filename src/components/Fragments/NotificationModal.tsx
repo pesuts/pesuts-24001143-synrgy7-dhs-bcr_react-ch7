@@ -1,27 +1,14 @@
 import React, { useContext } from "react";
 import Modal from "react-modal";
 import { CarsContext } from "../../contexts/CarsContext";
-// import { deleteCar } from "../../services/car.service";
-
-// interface ActionDelete {
-//   idCar?: string;
-//   isDeleted: boolean;
-// }
 
 interface NotificationModalProps {
-  // isOpen: boolean;
-  // onRequestClose: () => void;
-  // handleActionDeleteCar: (actionDelete: ActionDelete) => void;
   idCar?: string;
   message?: string;
   title?: string;
 }
 
 const NotificationModal: React.FC<NotificationModalProps> = ({
-  // isOpen,
-  // idCar,
-  // handleActionDeleteCar,
-  // onRequestClose,
   message,
   title,
 }) => {
@@ -75,7 +62,6 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
               <button
                 className="outline outline-[2px] outline-blue-600 font-bold px-6 py-2 
                   text-blue-600 rounded-sm hover:bg-blue-600 hover:text-white"
-                // onClick={onRequestClose}
                 onClick={() => setIsModalOpen(false)}
               >
                 Tidak

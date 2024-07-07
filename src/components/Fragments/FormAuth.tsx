@@ -11,12 +11,6 @@ import { useNavigate } from "react-router-dom";
 import { decodeJwt } from "../../utils/jwtVerify";
 import { GoogleLogin } from "@react-oauth/google";
 
-// type OAuthSuccessResponse = {
-//   credential: string;
-//   clientId: string;
-//   select_by: string;
-// };
-
 type Error = {
   isError: boolean;
   message?: string;
@@ -54,7 +48,6 @@ const FormAuth = ({ type, handleError }: Props) => {
 
     if (type === "login") {
       login({ email, password }, (status, res) => {
-        // console.log(res);
         if (status) {
           const successResponse = res as SuccessResponse;
           localStorage.setItem("token", successResponse.token);

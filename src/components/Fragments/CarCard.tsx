@@ -1,6 +1,3 @@
-// import { ReactNode } from "react";
-// import NavButton from "../Elements/Button/NavButton";
-
 import { CalendarDaysIcon, Cog6ToothIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 
 type Props = {

@@ -34,7 +34,6 @@ export default function DashboardCarCard({
   } = carsContext;
 
   return (
-    // <div className="max-w-sm">
     <div className="m-1">
       <div className="bg-white shadow-[0_0_3px_3px_rgba(0,0,0,0.1)] rounded-md p-8 border-">
         <img
@@ -47,14 +46,11 @@ export default function DashboardCarCard({
         </p>
         <p className="font-extrabold py-2">
           Rp {rentPerDay.toLocaleString("id")}/hari
-          {/* Rp {rentPerDay}/hari */}
         </p>
         <p className="py-2 text-[.9rem] flex gap-x-3">
-          {/* <ClockIcon className="h-5 w-5 -me-1" />Updated at {formatDate(updatedAt)} */}
           <KeyIcon className="h-5 w-5 -me-1" />-
         </p>
         <p className="py-2 text-[.9rem] flex gap-x-3">
-          {/* <ClockIcon className="h-5 w-5 -me-1" />Updated at {formatDate(updatedAt)} */}
           <ClockIcon className="h-5 w-5 -me-1" />Updated at {formatDate(updatedAt)}
         </p>
         <div className="flex justify-between gap-4 mt-4">
@@ -75,7 +71,6 @@ export default function DashboardCarCard({
           </button>
           <button
             onClick={() => { window.location.href = `/dashboard/cars/edit/${id}`}}
-            // onClick={() => { handleModal(true) }}
             className="cursor-pointer bg-lime-green text-white font-bold w-full 
             py-2.5 rounded-sm hover:bg-green-700 flex items-center justify-center gap-2 text-sm">
             <PencilSquareIcon className="h-5 w-5" /> Edit

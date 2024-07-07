@@ -17,10 +17,8 @@ type Error = {
 
 export default function Auth({
   type,
-  // children,
   header,
   subHeader,
-  // buttonText,
 }: Props) {
   const [error, setError] = useState<Error>({
     isError: false

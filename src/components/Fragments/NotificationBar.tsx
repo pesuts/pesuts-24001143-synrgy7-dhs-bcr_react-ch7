@@ -1,4 +1,3 @@
-// src/components/NotificationBar.tsx
 import React, { useContext } from 'react';
 import { CarsContext } from '../../contexts/CarsContext';
 

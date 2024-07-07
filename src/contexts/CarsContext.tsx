@@ -1,6 +1,5 @@
 import { createContext, useState, useEffect, ReactNode } from "react";
 import { deleteCar, getCars } from "../services/car.service";
-// import { getCars, deleteCar } from '../api';
 
 interface Car {
   id: number;
@@ -68,7 +67,6 @@ interface Props {
 
 const CarsProvider = ({ children }: Props) => {
   const [cars, setCars] = useState<Car[]>([]);
-  // const [actionDelete, setActionDelete] = useState<ActionDelete | undefined>();
   const [actionDelete, setActionDelete] = useState<ActionDelete>({
     isDeleted: false,
   });
@@ -85,7 +83,6 @@ const CarsProvider = ({ children }: Props) => {
   useEffect(() => {
     if (isNotificationVisible) {
       const timer = setTimeout(() => {
-        // onClose();
         onClose();
       }, 3000); // 3 detik
       return () => clearTimeout(timer);
@@ -112,7 +109,6 @@ const CarsProvider = ({ children }: Props) => {
   }, []);
 
   useEffect(() => {
-    // alert("bogeng");
     if (actionDelete?.idCar)
     if (actionDelete?.idCar && actionDelete.isDeleted) {
       deleteCar(
