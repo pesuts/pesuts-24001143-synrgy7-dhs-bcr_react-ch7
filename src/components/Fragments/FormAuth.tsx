@@ -106,7 +106,8 @@ const FormAuth = ({ type, handleError }: Props) => {
           name="name"
           type="text"
           placeholder="Masukkan nama"
-          style="mb-4"
+          style="mb-3"
+          styleInput="w-full"
           mandatory={true}
           handleInput={handleName}
         />
@@ -116,7 +117,8 @@ const FormAuth = ({ type, handleError }: Props) => {
         type="email"
         value={email}
         placeholder="Masukkan email"
-        style="mb-4"
+        style="mb-3"
+        styleInput="w-full"
         mandatory={true}
         handleInput={handleEmail}
       />
@@ -125,11 +127,12 @@ const FormAuth = ({ type, handleError }: Props) => {
         type="password"
         value={password}
         placeholder="Masukkan password"
-        style="mb-4"
+        style="mb-3"
+        styleInput="w-full"
         mandatory={true}
         handleInput={handlePassword}
       />
-      <div className="flex items-center gap-6 my-4">
+      <div className="flex items-center gap-6 pt-5">
         <button
           type="submit"
           className="w-full bg-blue-bcr text-white p-2 rounded hover:bg-dark-blue-bcr"

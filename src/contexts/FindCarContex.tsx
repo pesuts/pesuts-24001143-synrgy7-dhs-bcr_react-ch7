@@ -37,7 +37,7 @@ export const FindCarProvider = ({ children }: { children: ReactNode }) => {
     const fetch = async () => { 
       const fetchCars = await getApiCars();
       setCars(fetchCars);
-      setFilteredCars(fetchCars);
+      setFilteredCars([]);
     }
 
     fetch();

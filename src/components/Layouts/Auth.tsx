@@ -31,7 +31,7 @@ export default function Auth({
   }
 
   return (
-    <main className="flex items-center justify-center">
+    <main className="flex items-center justify-center overflow-y-hidden">
       <div className="flex w-full shadow-lg h-screen">
         <div
           className="hidden md:block lg:w-7/12 w-1/2 bg-cover bg-center
@@ -45,7 +45,7 @@ export default function Auth({
               to="/"
               className="w-28 h-8 my-2 bg-indigo-200 inline-block"
             ></Link>
-            <h2 className="text-2xl font-extrabold mb-4 text-blue-900">
+            <h2 className="text-2xl font-extrabold mb-2 text-blue-900">
               {header || type === "login"
                 ? "Selamat Datang Kembali! "
                 : "Selamat Datang di BCR"}

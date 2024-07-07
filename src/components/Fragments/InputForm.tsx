@@ -13,6 +13,7 @@ type Props = {
   placeholder?: string;
   style?: string;
   styleInput?: string;
+  styleLabel?: string;
   accept?: string;
   min?: number
 };
@@ -30,6 +31,7 @@ const InputForm: React.FC<Props> = ({
   placeholder,
   style,
   styleInput,
+  styleLabel,
   accept,
   min
 }) => {
@@ -65,7 +67,9 @@ const InputForm: React.FC<Props> = ({
 
   return (
     <div className={`mb-4 ${style || ""} relative`.trim()}>
-      <label htmlFor={lowercaseName} className="block text-gray-700 font-bold">
+      <label htmlFor={lowercaseName}
+        className={`block text-gray-700 font-bold ${styleLabel || ""}`.trim()}
+      >
         {label || capitalName}
         {mandatory && <span className="text-red-700">*</span>}
       </label>
@@ -80,7 +84,7 @@ const InputForm: React.FC<Props> = ({
         required={mandatory}
         accept={accept}
         min={min}
-        className={`w-full mt-2 p-2 border border-gray-300 rounded ${
+        className={`mt-2 p-2 border border-gray-300 rounded ${
           styleInput || ""
         }`.trim()}
       />
