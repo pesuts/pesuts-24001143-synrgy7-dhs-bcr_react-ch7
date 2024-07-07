@@ -38,7 +38,6 @@ export default function FindCar() {
         </div>
       </section>
 
-      {/* <!-- FOOTER --> */}
       <FooterLayout />
     </main>
   );

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "http://localhost:3000/api/users/";
+const url = import.meta.env.VITE_API_URL + "/users/";
 
 interface LoginData {
   email: string;
@@ -49,7 +49,6 @@ export const register = (
     .then((response) => {
       const successResponse: SuccessResponse = response.data;
       callback(true, successResponse);
-      // return successResponse;
     })
     .catch((error) => {
       const errorResponse: ErrorResponse = error.response?.data;

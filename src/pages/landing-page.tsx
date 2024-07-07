@@ -9,25 +9,12 @@ import WhyUs from "../components/Layouts/WhyUs";
 export default function LandingPage() {
   return (
     <main className="mb-5">
-      {/* <!-- HERO SECTION --> */}
       <Hero />
-
-      {/* <!-- OUR CAR RENTAL SECTION --> */}
       <Our />
-
-      {/* <!-- WHY US SECTION --> */}
       <WhyUs />
-
-      {/* <!-- TESTIMONIAL SECTION --> */}
       <Testimonial />
-
-      {/* <!-- GETTING STARTED SECTION --> */}
       <GettingStarted />
-
-      {/* <!-- FAQ --> */}
       <Faq />
-
-      {/* <!-- FOOTER --> */}
       <FooterLayout />
     </main>
   );

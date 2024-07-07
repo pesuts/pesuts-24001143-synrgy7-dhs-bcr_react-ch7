@@ -43,9 +43,9 @@ export default function FindCarForm() {
       formPenumpang !== ""
     )
       return filterCarsWithAllParams(
-        formDriver,
-        formTanggal,
-        formWaktu,
+        // formDriver,
+        // formTanggal,
+        // formWaktu,
         formPenumpang
       );
     if (formDriver !== "" && formTanggal !== "" && formWaktu !== "")
@@ -54,9 +54,9 @@ export default function FindCarForm() {
   }
 
   function filterCarsWithAllParams(
-    formDriver: boolean,
-    formTanggal: string,
-    formWaktu: string,
+    // formDriver: boolean,
+    // formTanggal: string,
+    // formWaktu: string,
     formPenumpang: string
   ): Car[] {
     return cars.filter(

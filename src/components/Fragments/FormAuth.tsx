@@ -66,12 +66,13 @@ const FormAuth = ({ type, handleError }: Props) => {
       return;
     }
     if (type === "register") { 
+      if (password.length < 8) { 
+        handleError({ isError: true, message: "Password minimal 8 karakter" });
+        setPassword("");
+        return;
+      }
       register({ name, email, password }, (status, res) => {
         if (status) {
-          if (password.length < 8) { 
-            handleError({ isError: true, message: "Password minimal 8 karakter" });
-            return;
-          }
           handleError({ isError: false });
           navigate("/login");
         }
@@ -79,6 +80,8 @@ const FormAuth = ({ type, handleError }: Props) => {
           const errorResponse = res as ErrorResponse;
           handleError({isError: true, message: errorResponse.message});
           console.log(errorResponse.message);
+          setEmail("");
+          setPassword("");
           return;
         }
       }
@@ -103,6 +106,7 @@ const FormAuth = ({ type, handleError }: Props) => {
       <InputForm
         name="email"
         type="email"
+        value={email}
         placeholder="Masukkan email"
         style="mb-4"
         mandatory={true}
@@ -111,6 +115,7 @@ const FormAuth = ({ type, handleError }: Props) => {
       <InputForm
         name="password"
         type="password"
+        value={password}
         placeholder="Masukkan password"
         style="mb-4"
         mandatory={true}

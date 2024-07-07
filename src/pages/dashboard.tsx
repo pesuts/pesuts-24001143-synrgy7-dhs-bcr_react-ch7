@@ -19,7 +19,6 @@ export default function Dashboard({ children, title, type }: Props) {
     <div className="flex min-h-screen">
       <aside className="flex">
         <div className="bg-blue-bcr text-white w-24 space-y-6 py-7 px-2">
-          {/* <div className="text-center text-2xl font-semibold">Dashboard</div> */}
           <a className="cursor-pointer text-center text-2xl font-semibold 
             text-blue-900 p-3 ms-2 bg-white">BCR</a>
           <DashboardNav />

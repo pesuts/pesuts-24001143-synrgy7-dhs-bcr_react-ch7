@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 // import { useLogin } from "../../../hooks/useLogin";
 import { decodeJwt } from "../../../utils/jwtVerify";
 import { Link } from "react-router-dom";
-import { EyeIcon } from "@heroicons/react/24/outline";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 
 type Props = {
   title: string;
@@ -18,7 +18,7 @@ export default function DashboardHeader({
 }: Props) {
   function handleLogout() {
     localStorage.removeItem("token");
-    window.location.href = "/login";
+    window.location.href = "/";
   }
 
   const [userName, setUserName] = useState<string>("");
@@ -49,7 +49,7 @@ export default function DashboardHeader({
         </h3>
         <div className="flex items-center relative">
           <span className="absolute left-7">
-            <EyeIcon className="w-5 h-5 text-slate-600"/>
+            <MagnifyingGlassIcon className="w-5 h-5 text-slate-600"/>
           </span>
           <input
             type="text"

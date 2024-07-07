@@ -7,7 +7,7 @@ import DashboardCars from "./components/Layouts/Dashboard/DashboardCars";
 import DashboardForm from "./components/Layouts/Dashboard/DashboardForm";
 import Register from "./pages/register";
 import Dashboard from "./pages/dashboard";
-import ErrorPage from "./pages/404";
+import ErrorPage from "./pages/error";
 import ProtectedRoute from "./middleware/ProtectedRoute";
 import ProtectedAdminRoute from "./middleware/ProtectedAdminRoute";
 import FindCarProvider from "./contexts/FindCarContex";

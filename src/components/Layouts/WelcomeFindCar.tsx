@@ -13,7 +13,6 @@ export default function WelcomeFindCar({ children }: Props) {
         <Navbar />
         <Hero style="lg:mb-28"></Hero>
       </div>
-      {/* <FindCarForm /> */}
       {children}
     </section>
   );

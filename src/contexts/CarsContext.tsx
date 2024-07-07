@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useState, useEffect, ReactNode } from "react";
 import { deleteCar, getCars } from "../services/car.service";
 // import { getCars, deleteCar } from '../api';
 
@@ -27,6 +27,8 @@ interface CarsContextProps {
   isNotificationVisible: boolean;
   notificationMessage: string;
   isSuccess: boolean | undefined;
+  query: string;
+  setQuery: (query: string) => void;
   setCars: (cars: Car[]) => void;
   setActionDelete: (actionDelete: ActionDelete) => void;
   setIsModalOpen: (isOpen: boolean) => void;
@@ -70,6 +72,7 @@ const CarsProvider = ({ children }: Props) => {
   const [actionDelete, setActionDelete] = useState<ActionDelete>({
     isDeleted: false,
   });
+  const [query, setQuery] = useState<string>("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isNotificationVisible, setIsNotificationVisible] = useState(false);
   const [notificationMessage, setNotificationMessage] = useState("");
@@ -88,6 +91,12 @@ const CarsProvider = ({ children }: Props) => {
       return () => clearTimeout(timer);
     }
   }, [isNotificationVisible, onClose]);
+
+  useEffect(() => {
+    if (query !== "") {
+      setCars(cars.filter((car) => car.model.toLowerCase().includes(query)));
+    }
+  }, [query]);
 
   useEffect(() => {
     const getCarsState = async () => {
@@ -137,6 +146,8 @@ const CarsProvider = ({ children }: Props) => {
         isNotificationVisible,
         notificationMessage,
         isSuccess,
+        query,
+        setQuery,
         setCars,
         setActionDelete,
         setIsModalOpen,

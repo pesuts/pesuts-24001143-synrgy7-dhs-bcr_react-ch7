@@ -35,7 +35,7 @@ export default function Auth({
       <div className="flex w-full shadow-lg h-screen">
         <div
           className="hidden md:block lg:w-7/12 w-1/2 bg-cover bg-center
-      bg-[linear-gradient(to_right,rgba(60,80,200,0.3),rgba(60,80,200,0.3)),url('img/jpg/login-bg.jpg')]
+      bg-[linear-gradient(to_right,rgba(60,80,200,0.3),rgba(60,80,200,0.3)),url('/img/jpg/login-bg.jpg')]
       "
         ></div>
 

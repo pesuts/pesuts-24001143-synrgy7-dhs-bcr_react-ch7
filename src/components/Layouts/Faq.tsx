@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import FaqList from "../Fragments/FaqList";
 
 export default function Faq() {
+  const [activeIndex, setActiveIndex] = useState<number>(-1);
+
   const faqList = [
     {
       text: "Apa saja syarat yang dibutuhkan?",
@@ -53,16 +56,17 @@ export default function Faq() {
         </div>
       </div>
       <div
-        className="lg:w-7/12"
+        className="lg:w-7/12 flex flex-col gap-5"
         id="accordion-collapse"
-        data-accordion="collapse"
       >
         {faqList.map((faq, index) => (
           <FaqList
-            key={index+1}
+            key={index}
+            index={index}
             text={faq.text}
-            // id={faq.id}
             description={faq.description}
+            activeIndex={activeIndex}
+            setActiveIndex={setActiveIndex}
           />
         ))}
       </div>
