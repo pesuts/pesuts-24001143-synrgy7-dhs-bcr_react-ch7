@@ -19,7 +19,7 @@ interface ActionDelete {
   isDeleted: boolean;
 }
 
-interface CarsContextProps {
+export interface CarsContextProps {
   cars: Car[];
   actionDelete: ActionDelete;
   isModalOpen: boolean;

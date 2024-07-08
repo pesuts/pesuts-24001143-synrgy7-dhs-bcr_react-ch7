@@ -6,7 +6,7 @@ type Props = {
 };
 
 const Footer = ({ children }: Props) => {
-  return { children };
+  return <div>{ children }</div>;
 }
 
 const Contact = ({ text }: Props) => {
@@ -31,7 +31,7 @@ const NavButton = ({ text }: Props) => {
 const SocialMedia = ({ text }: Props) => {
   return (
     <a href="">
-      <img src={`img/icons/icon-${text}.png`} width="30" alt="" />
+      <img src={`img/icons/icon-${text}.png`} width="30" alt={text} />
   </a>
   );
 }

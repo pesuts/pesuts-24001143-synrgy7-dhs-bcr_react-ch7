@@ -9,13 +9,18 @@ type Props = {
 export default function FaqList({ text, description, index, activeIndex, setActiveIndex }: Props) {
   const isOpen = index === activeIndex;
 
+  const handleClick = () => {
+    setActiveIndex(isOpen ? -1 : index);
+  };
+
   return (
     <div className="shadow-lg">
       <h2 id={`accordion-collapse-heading-${index}`}>
         <button
           type="button"
           className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-md focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
-          onClick={() => setActiveIndex(isOpen ? -1 : index)}
+          // onClick={() => setActiveIndex(isOpen ? -1 : index)}
+          onClick={handleClick}
           aria-expanded={isOpen}
           aria-controls={`accordion-collapse-body-${index}`}
         >
