@@ -1,5 +1,14 @@
 # React + TypeScript + Vite
 
+## Deployment
+### FrontEnd
+https://bcr-ch7-daniel.netlify.app/
+
+### Backend
+https://bcr-api-ch7-4v2butogya-uc.a.run.app/
+
+---
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
