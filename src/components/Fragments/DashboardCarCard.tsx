@@ -28,7 +28,7 @@ export default function DashboardCarCard({
   }
 
   const {
-    actionDelete,
+    // actionDelete,
     setActionDelete,
     setIsModalOpen,
   } = carsContext;
@@ -61,7 +61,6 @@ export default function DashboardCarCard({
                   idCar: id,
                   isDeleted: false
               })
-              console.log(actionDelete)
             }}
             className="cursor-pointer outline outline-2 outline-red-600 text-red-600 
             font-bold w-full py-2.5 rounded-sm hover:bg-red-600 hover:text-white

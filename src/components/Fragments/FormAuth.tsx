@@ -63,7 +63,6 @@ const FormAuth = ({ type, handleError }: Props) => {
         } else {
           const errorResponse = res as ErrorResponse;
           handleError({ isError: true, message: errorResponse.message });
-          console.log(errorResponse.message);
           return;
         }
       });

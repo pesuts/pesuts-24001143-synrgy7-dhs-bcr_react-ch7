@@ -24,10 +24,8 @@ test('toggle FaqList component open and close', () => {
   const questionButton = screen.getByRole('button', { name: text });
   expect(questionButton).toBeInTheDocument();
 
-  // Click to open
   fireEvent.click(questionButton);
   expect(setActiveIndex).toHaveBeenCalledWith(index);
-  // Update the component with the new state
   rerender(
     <FaqList
       text={text}
@@ -38,7 +36,6 @@ test('toggle FaqList component open and close', () => {
     />
   );
 
-  // Click again to close
   fireEvent.click(questionButton);
   expect(setActiveIndex).toHaveBeenCalledWith(-1);
 });

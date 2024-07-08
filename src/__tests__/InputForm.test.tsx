@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom'; // Ensure this is imported
+import '@testing-library/jest-dom';
 import InputForm from '../components/Fragments/InputForm';
 
 describe('InputForm Component', () => {

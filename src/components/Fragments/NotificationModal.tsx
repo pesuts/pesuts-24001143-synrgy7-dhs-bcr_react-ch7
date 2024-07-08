@@ -54,7 +54,6 @@ const NotificationModal: React.FC<NotificationModalProps> = ({
                     idCar: actionDelete.idCar,
                     isDeleted: true,
                   });
-                  console.log(actionDelete);
                 }}
               >
                 Ya

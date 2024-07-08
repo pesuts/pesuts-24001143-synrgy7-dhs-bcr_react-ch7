@@ -26,7 +26,7 @@ export default function DashboardForm() {
           const result = await getCarById(id);
           setCar(result[0]!);
         } catch (error) {
-          console.log(error);
+          console.error(error);
         }
       };
 

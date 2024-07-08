@@ -114,7 +114,6 @@ const CarsProvider = ({ children }: Props) => {
       deleteCar(
         actionDelete.idCar,
         (status: boolean, res: SuccessResponse | ErrorResponse) => {
-          console.log(res);
           if (status) {
             setIsSuccess(true);
             setCars((prevCars) =>
