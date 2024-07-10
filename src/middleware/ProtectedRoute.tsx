@@ -14,6 +14,9 @@ const ProtectedRoute = ({ children }: Props) => {
 
   useEffect(() => {
     if (token === null || token === undefined || isTokenExpired(token)) {
+      if (token && isTokenExpired(token)) {
+        localStorage.removeItem("token");
+      }
       navigate("/login");
     } else {
       setIsAuthenticated(true);
