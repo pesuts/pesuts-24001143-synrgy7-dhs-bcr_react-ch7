@@ -1,4 +1,9 @@
-import { createBrowserRouter, RouterProvider, Route, createRoutesFromElements } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  createRoutesFromElements,
+} from "react-router-dom";
 import LandingPage from "./pages/landing-page";
 import FindCar from "./pages/find-car";
 import Login from "./pages/login";
@@ -11,6 +16,7 @@ import ErrorPage from "./pages/error";
 import ProtectedRoute from "./middleware/ProtectedRoute";
 import ProtectedAdminRoute from "./middleware/ProtectedAdminRoute";
 import FindCarProvider from "./contexts/FindCarContex";
+import ProtectedAuthRoute from "./middleware/ProtectedAuthRoute";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,8 +32,22 @@ const router = createBrowserRouter(
           </ProtectedRoute>
         }
       />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
+      <Route
+        path="/login"
+        element={
+          <ProtectedAuthRoute>
+            <Login />
+          </ProtectedAuthRoute>
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          <ProtectedAuthRoute>
+            <Register />
+          </ProtectedAuthRoute>
+        }
+      />
       <Route
         path="/dashboard"
         element={
@@ -81,8 +101,6 @@ const router = createBrowserRouter(
   )
 );
 
-export const App = () => (
-  <RouterProvider router={router} />
-);
+export const App = () => <RouterProvider router={router} />;
 
 export default App;
